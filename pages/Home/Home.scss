@@ -1,0 +1,25 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.home {
+    padding: 6px 0;
+    border-top: 2px solid $red;
+
+    &__text-group-1 {
+        display: flex;
+        align-items: center;
+        display: column;
+    }
+
+    &__small-text {
+        @include small-text;
+    }
+
+    &__arrow {
+        width: 16px;
+        height: 16px;
+    }
+}

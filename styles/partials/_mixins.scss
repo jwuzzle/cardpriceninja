@@ -1,0 +1,19 @@
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $desktop-breakpoint) {
+        @content;
+    }
+}
+
+
+//desktop & tablet font styles
+
+@mixin small-text {
+    font-size: 16px;
+    font-weight: 400;
+}
