@@ -1,0 +1,29 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.hero-carousel {
+
+    &__preview {
+        background-color: $lightgray;
+        padding: 16px;
+        width: 375px;
+        border-radius: 10px;
+    }
+
+    &__main-image {
+        width: 404px;
+        height: 404px;
+        padding: 20px;
+    }
+}
+
+.arrow {
+    position: absolute;
+    left: 15%;
+    bottom: 0;
+    z-index: 0;
+
+}

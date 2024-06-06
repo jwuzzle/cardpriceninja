@@ -1,0 +1,60 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+
+.header {
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 25px;
+    border-bottom: 2px solid $cobalt;
+
+    &__link {
+        text-decoration: none;
+        color: $black;
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    &__logo-text {
+        padding-left: 6px;
+        font-size: 24px;
+    }
+
+    &__menu {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    &__menu-object {
+        width: 24px;
+        height: 24px;
+
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+
+    }
+
+}
+
+
+.text-primary {
+    color: $cobalt;
+}

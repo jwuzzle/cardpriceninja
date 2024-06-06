@@ -1,0 +1,43 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.search {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.search-bar {
+
+    flex: 1;
+    min-width: 200px;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid $lightgray;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0 1px rgba(0,0,0, 0.05);
+    @include body-copy;
+    color: $black;
+
+
+    &__button {
+        background-color: $lightgray;
+        border: 1px solid $lightgray;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 0 1px rgba(0,0,0, 0.05);
+        padding: 0.75rem 1.25rem;
+        color: $white;
+        @include button-label;
+      
+    }
+        
+}
+
+.seach-bar__button:hover {
+    opacity: 0.9;
+}
+
