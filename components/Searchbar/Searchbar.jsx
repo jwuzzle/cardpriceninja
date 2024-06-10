@@ -1,9 +1,13 @@
 import "./Searchbar.scss";
 import { useState } from "react";
+import axios from "axios";
+
+const baseURL = import.meta.env.VITE_APP_BASE_URL;
 
 const Searchbar = () => {
   const [searchPrompt, setSearchPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
   const isValidSNKDUNKProductUrl = (url, string) => {
     try {
       const parsedURL = new URL(url);
@@ -22,7 +26,9 @@ const Searchbar = () => {
     return false;
   };
 
-  const handleSubmit = (e) => {
+  const [data, setData] = useState([]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const isValidLink = isValidSNKDUNKProductUrl(searchPrompt);
@@ -31,13 +37,22 @@ const Searchbar = () => {
 
     try {
       setIsLoading(true);
-      //Scrape the product page 
+
+      //Scrape the product page
+
+      const response = await axios(
+        `${baseURL}/scrape?url=${encodeURIComponent(searchPrompt)}`
+      );
+      console.log(response.data);
+      setData(response.data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     } finally {
-        setIsLoading(false);
+      setIsLoading(false);
     }
   };
+
+  console.log(data);
 
   return (
     <form className="search" onSubmit={handleSubmit}>
@@ -48,7 +63,11 @@ const Searchbar = () => {
         placeholder="Enter product link"
         className="search-bar"
       />
-      <button type="submit" className="search-bar__button" disabled={searchPrompt === ""}>
+      <button
+        type="submit"
+        className="search-bar__button"
+        disabled={searchPrompt === ""}
+      >
         {isLoading ? "Searching..." : "Search"}
       </button>
     </form>
