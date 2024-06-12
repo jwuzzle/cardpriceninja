@@ -16,12 +16,14 @@ const ResultsPage = () => {
 
   const onClick = async () => {
     try {
-      const response = await axios(
-        `${baseURL}/scrape?url=${encodeURIComponent(searchPrompt)}`
-      );
-      console.log(response.data);
-      const stringifiedListingData = JSON.stringify(response.data);
-  sessionStorage.setItem("scraped listing data", stringifiedListingData);
+      const response = await axios.post(
+        `${baseURL}/scrape/used`, {
+          url: searchPrompt
+        }); 
+      console.log(response);
+      console.log("Response from server after post:", response.data);
+      const stringifiedSNKListingData = JSON.stringify(response.data);
+      sessionStorage.setItem("snk listing data", stringifiedSNKListingData);
     } catch (error) {
       console.log(error);
     } 

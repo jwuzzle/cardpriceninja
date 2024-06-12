@@ -23,6 +23,10 @@
     @include body-copy;
     color: $black;
 
+    &__helper {
+        font-size: 10px;
+    }
+
 
     &__button {
         background-color: $lightgray;

@@ -9,10 +9,14 @@ const CompareSnkEbay = () => {
   const scrapedDataObjectFromStorage = sessionStorage.getItem("scraped data");
   const scrapedDataObjectParsed = JSON.parse(scrapedDataObjectFromStorage);
 
+  const scrapedSNKListingDataObjectFromStorage = sessionStorage.getItem("snk listing data");
+  const scrapedSNKListingDataObjectParsed = JSON.parse(scrapedSNKListingDataObjectFromStorage);
+
   const ebayDataObjectFromStorage = sessionStorage.getItem("ebay data");
   const ebayDataObjectParsed = JSON.parse(ebayDataObjectFromStorage);
 
-  const snkrunkData = scrapedDataObjectParsed;
+  const snkrdunkData = scrapedDataObjectParsed;
+  const snkdunkListingData = scrapedSNKListingDataObjectParsed;
   const ebayData = ebayDataObjectParsed;
 
   console.log(ebayData);
@@ -21,7 +25,14 @@ const CompareSnkEbay = () => {
   return (
     <div>
       <div>
-        <h1>SNKDUNK Listings:</h1>
+        <h1>SNKRDUNK Listings:</h1>
+        {snkdunkListingData.map((listing) => (
+            <div>
+                <p>{listing.price}</p>
+                <p>{listing.evaluation}</p>
+                <img src={listing.image} alt="card picture" />
+                </div>
+        ))}
       </div>
       <div>
         <h1>Ebay Listings:</h1>
