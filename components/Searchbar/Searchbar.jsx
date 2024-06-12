@@ -67,9 +67,10 @@ const Searchbar = () => {
           type="text"
           value={searchPrompt}
           onChange={(e) => setSearchPrompt(e.target.value)}
-          placeholder="Enter product link"
+          placeholder="Enter SNKRDUNK product link"
           className="search-bar"
         />
+        <p className="search-bar__helper">Example: https://snkrdunk.com/en/trading-cards/93379</p>
         <button
           type="submit"
           className="search-bar__button"
