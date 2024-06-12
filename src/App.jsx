@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from "../components/Navbar/Navbar";
 import Home from '../pages/Home/Home';
 import ResultsPage from '../pages/Results/ResultsPage';
+import CompareSnkEbay from '../pages/CompareSnkEbay/CompareSnkEbay';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/results" element={<ResultsPage />} />
+      <Route path="/compare" element={<CompareSnkEbay />} />
     </Routes>
     </BrowserRouter>
     </>
