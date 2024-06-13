@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { compile } from "sass";
+import "./EbaySearchBar.scss";
 
 const baseURL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -18,7 +18,7 @@ const EbaySearchBar = () => {
     try {
       setIsLoading(true);
       console.log("Name:", searchPrompt);
-      const response = await axios.get(`${baseURL}/ebay?name=${searchPrompt}}`);
+      const response = await axios.get(`${baseURL}/ebay?name=${searchPrompt}`);
       console.log(response.data);
       const findItemsByKeywordsResponse = response.data.findItemsByKeywordsResponse;
       console.log(findItemsByKeywordsResponse)
@@ -36,21 +36,19 @@ const EbaySearchBar = () => {
     }
   };
 
-
-
   return (
     <>
-      <form className="search" onSubmit={handleSubmit}>
+      <form className="ebay-search" onSubmit={handleSubmit}>
         <input
           type="text"
           value={searchPrompt}
           onChange={(e) => setSearchPrompt(e.target.value)}
           placeholder="Enter card name (ie Japanese Umbreon VMAX HR 095/069)"
-          className="search-bar"
+          className="ebay-search__bar"
         />
         <button
           type="submit"
-          className="search-bar__button"
+          className="ebay-search__button"
           disabled={searchPrompt === ""}
         >
           {isLoading ? "Searching..." : "Search"}
