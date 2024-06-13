@@ -2,7 +2,7 @@ import "./Searchbar.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Results from "../Results/Results";
+import Results from "../SnkrDunkResults/SnkrDunkResults";
 
 const baseURL = import.meta.env.VITE_APP_BASE_URL;
 

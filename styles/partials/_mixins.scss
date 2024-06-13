@@ -11,6 +11,28 @@
 }
 
 
+//mobile font styles
+
+@mixin page-header-mobile {
+    font-size: 16px;
+}
+
+@mixin subheader-mobile {
+    font-size: 14px;
+}
+
+@mixin body-mobile {
+    font-size: 13px;
+}
+
+@mixin button-label-mobile {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+
+
 //desktop & tablet font styles
 
 @mixin small-text {
