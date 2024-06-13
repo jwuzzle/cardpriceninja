@@ -29,7 +29,7 @@ const Home = () => {
         </div>
       </div>
       <div className="trending">
-        <section className="tending-section">
+        <section className="trending-section">
           <h2 className="trending-section__header">Trending</h2>
           <div className="trending-section__items">
             {["Umbreon VMAX", "Giratina V", "Rayquaza VMAX"].map((product) => (

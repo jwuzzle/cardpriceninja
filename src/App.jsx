@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from "../components/Navbar/Navbar";
 import Home from '../pages/Home/Home';
 import ResultsPage from '../pages/Results/ResultsPage';
-import CompareSnkEbay from '../pages/CompareSnkEbay/CompareSnkEbay';
+import CompareSnkEbay from '../pages/CompareSnkrEbay/CompareSnkrEbay';
 
 
 function App() {

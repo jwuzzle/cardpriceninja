@@ -1,0 +1,122 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.compare {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__subtitle {
+        @include subheader-mobile;
+        margin: 24px 16px 0 16px;
+    }
+
+    &__section-listings {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+
+.snkr-listings {
+    display: flex;
+    margin: 16px;
+    justify-content: center;
+    gap: 5%;
+
+    &__individual {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 200px;
+        width: 50%;
+        padding: 16px;
+        border-radius: 5px;
+        box-shadow: rgba(0, 75, 173, 0.649) 0px 2px 8px 0px;
+    }
+
+    &__price {
+        @include button-label-mobile;
+    }
+
+    &__evaluation {
+        @include button-label-mobile;
+    }
+
+    &__image {
+
+        width: 100px;
+        height: 150px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+    }
+
+}
+
+.ebay-listings {
+    display: flex;
+    margin: 16px;
+    justify-content: center;
+    gap: 5%;
+
+    &__individual {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 245px;
+        width: 50%;
+        padding: 16px;
+        border-radius: 5px;
+        box-shadow: rgba(0, 75, 173, 0.649) 0px 2px 8px 0px;
+    }
+
+    &__title {
+        @include button-label-mobile;
+        font-size: 10px;
+        margin-bottom: 8px;
+    }
+
+    &__image {
+        width: 100px;
+        height: 150px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+    }
+
+    &__label {
+        @include button-label-mobile;
+    }
+
+    &__data {
+        @include button-label-mobile;
+    }
+
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+
+    &__button {
+        border: 1px solid $cobalt;
+        width: 20px;
+        border-radius: 2px;
+        background-color: $white;
+
+    }
+}
+
+.pagination__button[disabled] {
+    background-color: $cobalt;
+    color: white;
+  }
