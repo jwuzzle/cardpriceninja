@@ -5,18 +5,33 @@
 @use "../../styles/partials/typography" as *;
 
 .hero-carousel {
+  height: fit-content;
 
     &__preview {
         background-color: $lightgray;
         padding: 16px;
-        width: 375px;
         border-radius: 10px;
     }
 
     &__main-image {
-        width: 404px;
-        height: 404px;
-        padding: 20px;
+        height: 250px;
+        padding: 40px 20px;
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+
+        &__preview {
+            background-color: $lightgray;
+            padding: 0;
+            width: 300px;
+            border-radius: 10px;
+        }
+    
+        &__main-image {
+            width: unset;
+            height: 400px;
+            padding: 20px;
+        }
     }
 }
 

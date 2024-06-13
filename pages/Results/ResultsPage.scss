@@ -6,8 +6,16 @@
 
 .results {
 
+
+    &__top {
+
+    }
+
     &__header {
-        @include page-header-mobile;
+        @include subheader-mobile;
+        font-weight: 500;
+        margin: 16px;
+        color: $cobalt;
     }
 
 
@@ -37,8 +45,20 @@
         margin-left: 5px;
         margin-top: 8px;
         padding: 4px;
+        border-radius: 5px;
+        background-color: $white;
+        border: 1px solid $cobalt;
         @include button-label-mobile;
+    }
 
+    &__bottom {
+        margin: 16px;
+        display: flex;
+    }
+
+    &__loading {
+        display: flex;
+        align-items: center;
     }
 
     &__ebay-search-header {
@@ -52,12 +72,19 @@
 }
 
 
-.accept {
-
+.accept:hover {
+    background-color: $cobalt;
+    color: $white;
+    font-weight: 600;
+    opacity: .6;
 }
 
-.decline {
-
+.decline:hover {
+    background-color: $red;
+    border: 1px solid $red;
+    color: $white;
+    font-weight: 600;
+    opacity: .6;
 }
 
 
