@@ -67,14 +67,66 @@
 
     @media only screen and (min-width: $tablet-breakpoint) {
 
-       
+        &__header {
+            @include page-copy;
+            margin: 36px 90px;
+        }
+
+        &__snkr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid $cobalt;
+            border-radius: 10px;
+            margin: 36px 90px;
+            padding: 36px;
+        }
+
+        &__accept {
+            height: fit-content;
+            align-content: center;
+            width: 300px;
+        }
+    
+        &__subheader {
+            @include subheader;
+        }
     }
 
     @media only screen and (min-width: $desktop-breakpoint) {
 
-       
+        &__snkr-container {
+            flex-direction: row;
+        }
 
+        &__accept {
+            position: absolute;
+            right: 15%;
+        }
     }
+
+}
+
+
+.accept {
+    @include body-mobile;
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+
+        @include body-copy;
+    }
+
+
+}
+
+.decline {
+    @include body-mobile;
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+
+        @include body-copy;
+    }
+
 
 }
 
