@@ -55,25 +55,48 @@
     }
 
     @media only screen and (min-width: $tablet-breakpoint) {
+        margin: unset;
+
+        &__header {
+            @include page-copy;
+            display: flex;
+            text-align: center;
+           /*  width: max-content; */
+
+
+        }
         &__image {
-            width: 75%;
+            width: 50%;
         }
 
         &__desktop {
             display: flex;
-            flex-direction: row;
             align-items: center;
         }
+
+        &__image-background {
+            display: flex;
+            justify-content: center;
+        }
+        &__bottom {
+            width: 40%}
+
+            &__price {
+                @include subheader;
+            }
+        
+            &__listing-number {
+                @include subheader;
+            }
+
+
     }
 
     @media only screen and (min-width: $desktop-breakpoint) {
         &__image {
-            width: 75%;
         }
 
         &__desktop {
-            display: flex;
-            flex-direction: row;
         }
     }
 }

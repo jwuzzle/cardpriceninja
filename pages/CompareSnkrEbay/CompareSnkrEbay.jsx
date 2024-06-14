@@ -67,8 +67,8 @@ const CompareSnkEbay = () => {
         <h1 className="compare__subtitle">SNKRDUNK Listings:</h1>
         <div className="compare__section-listings">
           <div className="snkr-listings">
-            {currentItems.map((listing) => (
-              <div className="snkr-listings__individual">
+            {currentItems.map((listing, index) => (
+              <div key={index} className="snkr-listings__individual">
                 
                 <img
                   className="snkr-listings__image"
@@ -100,8 +100,8 @@ const CompareSnkEbay = () => {
         <h1 className="compare__subtitle">Ebay Listings:</h1>
         <div className="compare__section-listings">
         <div className="ebay-listings">
-          {currentEbayItems.map((listing) => (
-            <div className="ebay-listings__individual">
+          {currentEbayItems.map((listing, index) => (
+            <div key={index} className="ebay-listings__individual">
               <p className="ebay-listings__title">{listing.title}</p>
               <img
                 className="ebay-listings__image"

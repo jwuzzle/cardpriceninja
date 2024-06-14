@@ -9,17 +9,16 @@ import { useNavigate } from "react-router-dom";
 const baseURL = import.meta.env.VITE_APP_BASE_URL;
 
 const ResultsPage = () => {
-const navigate = useNavigate();
-  
+  const navigate = useNavigate();
+
   const scrapedDataObjectFromStorage = sessionStorage.getItem("scraped data");
   const scrapedDataObjectParsed = JSON.parse(scrapedDataObjectFromStorage);
   console.log(scrapedDataObjectParsed);
   console.log(scrapedDataObjectParsed.name);
 
   const regex = /\(.*\)$/;
-  const card_name = (scrapedDataObjectParsed.name).replace(regex, '')
-  console.log(card_name)
-
+  const card_name = scrapedDataObjectParsed.name.replace(regex, "");
+  console.log(card_name);
 
   const searchPrompt = `https://snkrdunk.com/en/trading-cards/${scrapedDataObjectParsed.id}/used`;
   console.log(searchPrompt);
@@ -30,41 +29,43 @@ const navigate = useNavigate();
   const onClick = async (e) => {
     try {
       setIsLoading(true);
-      const response = await axios.post(`${baseURL}/scrape/used`, {
-        url: searchPrompt,
-      });
-      console.log(response);
-      console.log("Response from server after post:", response.data);
-      const stringifiedSNKListingData = JSON.stringify(response.data);
-      sessionStorage.setItem("snk listing data", stringifiedSNKListingData);
-      setShowEbaySearch(true);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
+      try {
+        const response = await axios.post(`${baseURL}/scrape/used`, {
+          url: searchPrompt,
+        });
+        console.log(response);
+        console.log("Response from server after post:", response.data);
+        const stringifiedSNKListingData = JSON.stringify(response.data);
+        sessionStorage.setItem("snk listing data", stringifiedSNKListingData);
+        setShowEbaySearch(true);
+      } catch (error) {
+        console.log(error);
+      }
 
-    e.preventDefault();
-    try {
-      setIsLoading(true);
-      console.log("Name:", card_name);
-      const response = await axios.get(`${baseURL}/ebay?name=${card_name}`);
-      console.log(response.data);
-      const findItemsByKeywordsResponse = response.data.findItemsByKeywordsResponse;
-      console.log(findItemsByKeywordsResponse)
-      const searchResult = response.data.findItemsByKeywordsResponse[0].searchResult;
-      console.log(searchResult)
-      const searchResultItem = response.data.findItemsByKeywordsResponse[0].searchResult[0].item;
-      console.log(searchResultItem)
-      const stringifiedEbayData = JSON.stringify(searchResultItem);
-      sessionStorage.setItem("ebay data", stringifiedEbayData);
+      try {
+        console.log("Name:", card_name);
+        const response = await axios.get(`${baseURL}/ebay?name=${card_name}`);
+        console.log(response.data);
+        const findItemsByKeywordsResponse =
+          response.data.findItemsByKeywordsResponse;
+        console.log(findItemsByKeywordsResponse);
+        const searchResult =
+          response.data.findItemsByKeywordsResponse[0].searchResult;
+        console.log(searchResult);
+        const searchResultItem =
+          response.data.findItemsByKeywordsResponse[0].searchResult[0].item;
+        console.log(searchResultItem);
+        const stringifiedEbayData = JSON.stringify(searchResultItem);
+        sessionStorage.setItem("ebay data", stringifiedEbayData);
+      } catch (error) {
+        console.error(error);
+      }
     } catch (error) {
-      console.error(error);
+      console.error(error)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
       navigate("/compare");
     }
-
-
   };
 
   return (
@@ -89,7 +90,7 @@ const navigate = useNavigate();
             </div>
           </div>
         </div>
-       {/*  <div className="results__bottom">
+        {/*  <div className="results__bottom">
           {isLoading ? (
             <p className="results__loading">Loading...</p>
           ) : (
