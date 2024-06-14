@@ -7,9 +7,7 @@
 .results {
 
 
-    &__top {
-
-    }
+    &__top {}
 
     &__header {
         @include subheader-mobile;
@@ -19,9 +17,7 @@
     }
 
 
-    &__snkr-container {
-
-    }
+    &__snkr-container {}
 
     &__accept {
         margin: 16px;
@@ -67,6 +63,17 @@
 
     &__ebay-search {
         margin: 16px;
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+
+       
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+
+       
+
     }
 
 }

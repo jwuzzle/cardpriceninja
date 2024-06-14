@@ -9,7 +9,7 @@ const Home = () => {
       <div className="home__group-1">
         <div className="home__text">
           <p className="home__small-text">
-            Smart Shopping Starts Here
+          Elevate Your Collection with the Best Deals
             <img src={arrow} alt="arrow-right" className="home__arrow" />
           </p>
 
@@ -18,10 +18,11 @@ const Home = () => {
             <span className="text-primary">CardPriceNinja</span>
           </h1>
           <p className="home__body">
-            Powerful, self-serve product and comparison analytics to help you
-            purchase cards at the best value.
+          Discover the ultimate tool for purchasing Japanese cards at the best value. Our powerful, self-serve product and comparison analytics help you find the best deals by comparing listings on SNKRDUNK and eBay.
           </p>
-
+          <p className="home__body">
+          Try it now by entering the SNKRDUNK URL of the card you are interested in.
+          </p>
           <Searchbar />
         </div>
         <div className="home__hero">
