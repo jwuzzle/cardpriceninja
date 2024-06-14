@@ -20,6 +20,7 @@ const CompareSnkEbay = () => {
 
   console.log(ebayData);
   console.log(ebayData[0].title);
+  console.log(scrapedSNKListingDataObjectParsed)
 
   console.log(snkdunkListingData);
   console.log(snkdunkListingData[0].price);
