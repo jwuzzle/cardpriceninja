@@ -16,11 +16,11 @@ const ResultsPage = () => {
   console.log(scrapedDataObjectParsed);
   console.log(scrapedDataObjectParsed.name);
 
-  const regex = /\(.*\)$/;
-  const card_name = scrapedDataObjectParsed.name.replace(regex, "");
+  const regex = /\[.*\)$/;
+  const card_name = "japanese " + scrapedDataObjectParsed.name.replace(regex, "");
   console.log(card_name);
 
-  const searchPrompt = `https://snkrdunk.com/en/trading-cards/${scrapedDataObjectParsed.id}/used`;
+  const searchPrompt = `https://snkrdunk.com/en/trading-cards/${scrapedDataObjectParsed.id}/used?sort=price_asc&isOnlyOnSale=true`;
   console.log(searchPrompt);
 
   const [showEbaySearch, setShowEbaySearch] = useState(false);

@@ -24,6 +24,54 @@
         flex-direction: column;
     }
 
+    &__top {
+
+    }
+
+    &__filter {
+        &--label {
+            @include button-label-mobile;
+        }
+
+        &--dropdown {
+            margin-left: 8px;
+            @include button-label-mobile;
+        }
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) { 
+        &__section-listings {
+            margin: 0 40px;
+        } 
+
+        &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 36px 40px 24px 40px;
+        }
+
+        &__subtitle {
+            @include subheader;
+            margin: unset;
+        }
+
+        &__filter {
+        &--label {
+            @include button-label;
+        }
+
+        &--dropdown {
+            margin-left: 8px;
+            @include body-copy;
+        }
+    }
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) { 
+        margin: 0 90px 36px 90px;
+    }
+
 }
 
 
@@ -37,7 +85,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 200px;
+        height: 240px;
         width: 50%;
         padding: 16px;
         border-radius: 5px;
@@ -54,10 +102,19 @@
 
     &__image {
 
-        width: 100px;
-        height: 150px;
+        width: 175px;
+        height: 200px;
         margin-bottom: 8px;
         border-radius: 5px;
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) { 
+        gap: 2%;
+
+        &__individual {
+            width: 200px;
+        }
+
     }
 
 }
@@ -72,7 +129,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 245px;
+        height: 240px;
         width: 50%;
         padding: 16px;
         border-radius: 5px;
@@ -86,7 +143,7 @@
     }
 
     &__image {
-        width: 100px;
+        width: 120px;
         height: 150px;
         margin-bottom: 8px;
         border-radius: 5px;
@@ -98,6 +155,18 @@
 
     &__data {
         @include button-label-mobile;
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) { 
+        gap: 2%;
+
+        &__individual {
+            width: 200px;
+        }
+
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
     }
 
 }
