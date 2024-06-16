@@ -58,12 +58,15 @@
 
         &__filter {
         &--label {
-            @include button-label;
+            @include small-text;
         }
 
         &--dropdown {
             margin-left: 8px;
-            @include body-copy;
+            padding: 3px 6px;
+            @include small-text;
+            border: 1px solid $cobalt;
+            border-radius: 5px;
         }
     }
     }
@@ -98,6 +101,13 @@
 
     &__evaluation {
         @include button-label-mobile;
+        margin-top: 3px;
+
+        &--style {
+            background-color: $black;
+            color: $white;
+            padding: 2px 4px;
+        }
     }
 
     &__image {
@@ -140,6 +150,7 @@
         @include button-label-mobile;
         font-size: 10px;
         margin-bottom: 8px;
+        height: 40px;
     }
 
     &__image {
@@ -151,10 +162,21 @@
 
     &__label {
         @include button-label-mobile;
+
+        &--type {
+            margin-bottom: 3px;
+            @include button-label-mobile;
+        }
     }
 
     &__data {
         @include button-label-mobile;
+
+        &--type {
+        background-color: $black;
+            color: $white;
+            padding: 2px 4px;
+    }
     }
 
     @media only screen and (min-width: $tablet-breakpoint) { 
