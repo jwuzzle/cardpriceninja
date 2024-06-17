@@ -123,6 +123,10 @@ const CompareSnkEbay = () => {
 
   return (
     <div className="compare">
+      <div className="compare__text">
+      <h1 className="compare__text--pageheader">Card Listings</h1>
+      <p className="compare__text--subheader">You can easily view and compare listings for your favorite cards from both SNKRDunk and eBay. Whether you're looking for graded or ungraded cards, we've got you covered.</p>
+      </div>
       <div className="compare__section">
         <div className="compare__top">
         <h1 className="compare__subtitle">SNKRDUNK Listings:</h1>
@@ -217,6 +221,9 @@ const CompareSnkEbay = () => {
             ))}
           </div>
         </div>
+      </div>
+      <div>
+        <p className="compare__disclaimer">PLEASE NOTE: This page may not provide all listings on each site. Please search on SNKRDUNK and EBAY for a full view of listings available to you on their platforms.</p>
       </div>
     </div>
   );

@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 import logo from "../../src/assets/logo/CardPriceNinjaLogo.svg";
+import search from "../../src/assets/icons/magnifying-glass-solid.svg";
+import { useState } from "react";
+import Searchbar from "../Searchbar/Searchbar";
 
 
 
@@ -11,6 +14,16 @@ const navIcons = [
 ]
 
 const Navbar = () => {
+
+const [openSearchBar, setOpenSearchBar] = useState(false)
+
+const openSearch = () => {
+    setOpenSearchBar(!openSearchBar)
+}
+
+console.log(openSearchBar)
+
+
   return (
     <header className="header">
         <nav className="nav">
@@ -19,9 +32,16 @@ const Navbar = () => {
         <p className="nav__logo-text">Card<span className="text-primary">Price</span><span>Ninja</span></p>
     </Link>
     <div className="nav__menu">
-    {navIcons.map((icon, index) => (
+    {openSearchBar === true ? (
+        <Searchbar 
+        helper="helper-off"
+        openSearchBar={() => openSearch()} />
+    ) : (null)}
+    <img onClick={openSearch} className="nav__menu-object" src={search} />
+
+    {/* {navIcons.map((icon, index) => (
         <img className="nav__menu-object" key={index} src={icon.src} alt={icon.alt}/>
-    ))}
+    ))} */}
     </div>
         </nav>
 

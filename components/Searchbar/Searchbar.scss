@@ -21,9 +21,9 @@
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
-        margin-top: 3rem;
         flex-direction: column;
         width: 50%;
+        margin: unset;
 
         &__top {
             width: 100%;
@@ -96,3 +96,7 @@
     opacity: 0.9;
 }
 
+
+.helper-off {
+    display: none;
+}

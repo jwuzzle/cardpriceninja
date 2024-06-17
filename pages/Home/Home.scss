@@ -82,6 +82,7 @@
 
         &__body {
             @include body-copy;
+            margin-bottom: 16px;
         }
 
         &__hero {
