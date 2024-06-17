@@ -63,6 +63,7 @@ const Searchbar = () => {
   return (
     <>
       <form className="search" onSubmit={handleSubmit}>
+        <div className="search__top">
         <input
           type="text"
           value={searchPrompt}
@@ -70,7 +71,6 @@ const Searchbar = () => {
           placeholder="Enter SNKRDUNK product link"
           className="search-bar"
         />
-        <p className="search-bar__helper">Example: https://snkrdunk.com/en/trading-cards/93379</p>
         <button
           type="submit"
           className="search-bar__button"
@@ -78,6 +78,9 @@ const Searchbar = () => {
         >
           {isLoading ? "Searching..." : "Search"}
         </button>
+        </div>
+        <p className="search-bar__helper">Example: https://snkrdunk.com/en/trading-cards/93379</p>
+        
       </form>
     </>
   );
