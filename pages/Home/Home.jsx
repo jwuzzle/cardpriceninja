@@ -15,7 +15,7 @@ const Home = () => {
 
           <h1 className="home__header">
             Unleash the Power of{" "}
-            <span className="text-primary">CardPriceNinja</span>
+            <span className="text__primary">Card<span className="text__secondary">Price<span className="text__primary">Ninja</span></span></span>
           </h1>
           <p className="home__body">
           Discover the ultimate tool for purchasing Japanese cards at the best value. Our powerful, self-serve product and comparison analytics help you find the best deals by comparing listings on SNKRDUNK and eBay.
