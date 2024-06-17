@@ -40,6 +40,18 @@
     }
 
     @media only screen and (min-width: $tablet-breakpoint) { 
+        &__text {
+            margin: 36px 40px 0 40px;
+
+            &--pageheader {
+                @include page-copy;
+            }
+
+            &--subheader {
+                @include body-copy; 
+            }
+        }
+
         &__section-listings {
             margin: 0 40px;
         } 
@@ -68,6 +80,14 @@
             border: 1px solid $cobalt;
             border-radius: 5px;
         }
+
+    }
+    &__disclaimer {
+        @include small-text;
+        margin-top: 36px;
+        display: flex;
+        justify-content: center;
+        
     }
     }
 
@@ -120,6 +140,7 @@
 
     @media only screen and (min-width: $tablet-breakpoint) { 
         gap: 2%;
+        justify-content: unset;
 
         &__individual {
             width: 200px;
@@ -181,6 +202,7 @@
 
     @media only screen and (min-width: $tablet-breakpoint) { 
         gap: 2%;
+        justify-content: unset;
 
         &__individual {
             width: 200px;

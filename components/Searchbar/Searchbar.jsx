@@ -6,7 +6,7 @@ import Results from "../SnkrDunkResults/SnkrDunkResults";
 
 const baseURL = import.meta.env.VITE_APP_BASE_URL;
 
-const Searchbar = () => {
+const Searchbar = (props) => {
   const [searchPrompt, setSearchPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ const Searchbar = () => {
       console.log(error);
     } finally {
       setIsLoading(false);
-      
+      {!props.openSearchBar ? "" : props.openSearchBar(false)}
       navigate("/results");
     }
   };
@@ -79,7 +79,7 @@ const Searchbar = () => {
           {isLoading ? "Searching..." : "Search"}
         </button>
         </div>
-        <p className="search-bar__helper">Example: https://snkrdunk.com/en/trading-cards/93379</p>
+        <p className={`search-bar__helper ${props.helper}`}>Example: https://snkrdunk.com/en/trading-cards/93379</p>
         
       </form>
     </>
