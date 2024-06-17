@@ -29,7 +29,7 @@ const Home = () => {
           <HeroCarousel />
         </div>
       </div>
-      <div className="trending">
+      {/* <div className="trending">
         <section className="trending-section">
           <h2 className="trending-section__header">Trending</h2>
           <div className="trending-section__items">
@@ -38,7 +38,7 @@ const Home = () => {
             ))}
           </div>
         </section>
-      </div>
+      </div> */}
     </section>
   );
 };
