@@ -11,6 +11,12 @@
     gap: 1rem;
     margin-top: 16px;
 
+    &__top {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
     @media only screen and (min-width: $tablet-breakpoint) {
         display: flex;
         flex-wrap: wrap;
@@ -18,19 +24,27 @@
         margin-top: 3rem;
         flex-direction: column;
         width: 50%;
+
+        &__top {
+            width: 100%;
+            flex-direction: row;
+            
+        }
     }
 }
 
 .search-bar {
 
     flex: 1;
-    min-width: 200px;
-    padding: 8px;
+    min-width: 100%;
+    padding: 8px 3px;
     border: 1px solid $lightgray;
     border-radius: 0.5rem;
     box-shadow: 0 0 0 1px rgba(0,0,0, 0.05);
     @include body-mobile;
     color: $black;
+
+
 
     &__helper {
         @include small-text-mobile;
@@ -45,6 +59,7 @@
         padding: 8px 16px;
         color: $white;
         @include button-label-mobile;
+        width: 100%;
       
     }
 
@@ -68,6 +83,7 @@
     &__button {
         @include button-label;
         width: fit-content;
+        margin-left: 8px;
       
     }
 

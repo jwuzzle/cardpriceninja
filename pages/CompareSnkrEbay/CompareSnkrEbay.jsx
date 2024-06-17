@@ -147,7 +147,7 @@ const CompareSnkEbay = () => {
                 />
                 <p className="snkr-listings__price">Price: {listing.price}</p>
                 <p className="snkr-listings__evaluation">
-                  Product type: {listing.evaluation}
+                  Product type: <span className="snkr-listings__evaluation--style">{listing.evaluation}</span>
                 </p>
               </div>
             ))}
@@ -189,9 +189,9 @@ const CompareSnkEbay = () => {
                   src={listing.galleryURL}
                   alt="card picture"
                 />
-                <p className="ebay-listings__label">
+                <p className="ebay-listings__label--type">
                   Type:{" "}
-                  <span className="ebay-listings__data">
+                  <span className="ebay-listings__data--type">
                     {listing.condition[0].conditionDisplayName}
                   </span>
                 </p>
