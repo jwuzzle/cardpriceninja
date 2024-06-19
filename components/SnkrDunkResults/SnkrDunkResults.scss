@@ -28,9 +28,7 @@
         margin-bottom: 8px;
     }
 
-    &__image-background {
-      
-    }
+    &__image-background {}
 
     &__image {
         width: 100%;
@@ -56,17 +54,18 @@
 
     @media only screen and (min-width: $tablet-breakpoint) {
         margin: unset;
+        flex-direction: row;
 
         &__header {
-            @include page-copy;
+            @include subheader;
             display: flex;
-            text-align: center;
-           /*  width: max-content; */
-
+            /* text-align: center; */
+            /*  width: max-content; */
 
         }
+
         &__image {
-            width: 50%;
+            width: 100%;
         }
 
         &__desktop {
@@ -74,29 +73,57 @@
             align-items: center;
         }
 
+        &__right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10%;
+
+        }
+
         &__image-background {
             display: flex;
             justify-content: center;
+            width: 50%;
         }
-        &__bottom {
-            width: 40%}
 
-            &__price {
-                @include subheader;
-            }
-        
-            &__listing-number {
-                @include subheader;
-            }
+        &__bottom {
+            width: 75%;
+        }
+
+        &__price {
+            @include body-copy;
+        }
+
+        &__listing-number {
+            @include body-copy;
+        }
 
 
     }
 
     @media only screen and (min-width: $desktop-breakpoint) {
-        &__image {
-        }
+        &__image {}
 
-        &__desktop {
-        }
+        &__desktop {}
     }
+}
+
+
+.mobile {
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        display: none;
+    }
+}
+
+
+.web {
+    display: none;
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        display: flex;
+    }
+
 }
