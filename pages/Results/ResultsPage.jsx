@@ -3,8 +3,9 @@ import SnkrDunkResults from "../../components/SnkrDunkResults/SnkrDunkResults";
 import axios from "axios";
 import EbaySearchBar from "../../components/EbaySearchBar/EbaySearchBar";
 import "./ResultsPage.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import NinjaLoader from "../../components/NinjaLoader/NinjaLoader";
 
 const baseURL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -17,7 +18,8 @@ const ResultsPage = () => {
   console.log(scrapedDataObjectParsed.name);
 
   const regex = /\[.*\)$/;
-  const card_name = "japanese " + scrapedDataObjectParsed.name.replace(regex, "");
+  const card_name =
+    "japanese " + scrapedDataObjectParsed.name.replace(regex, "");
   console.log(card_name);
 
   const searchPrompt = `https://snkrdunk.com/en/trading-cards/${scrapedDataObjectParsed.id}/used?sort=price_asc&isOnlyOnSale=true`;
@@ -29,47 +31,60 @@ const ResultsPage = () => {
   const onClick = async (e) => {
     try {
       setIsLoading(true);
-      try {
-        const response = await axios.post(`${baseURL}/scrape/used`, {
-          url: searchPrompt,
-        });
-        console.log(response);
-        console.log("Response from server after post:", response.data);
-        const stringifiedSNKListingData = JSON.stringify(response.data);
-        sessionStorage.setItem("snk listing data", stringifiedSNKListingData);
-        setShowEbaySearch(true);
-      } catch (error) {
-        console.log(error);
-      }
 
-      try {
-        console.log("Name:", card_name);
-        const response = await axios.get(`${baseURL}/ebay?name=${card_name}`);
-        console.log(response.data);
-        const findItemsByKeywordsResponse =
-          response.data.findItemsByKeywordsResponse;
-        console.log(findItemsByKeywordsResponse);
-        const searchResult =
-          response.data.findItemsByKeywordsResponse[0].searchResult;
-        console.log(searchResult);
-        const searchResultItem =
-          response.data.findItemsByKeywordsResponse[0].searchResult[0].item;
-        console.log(searchResultItem);
-        const stringifiedEbayData = JSON.stringify(searchResultItem);
-        sessionStorage.setItem("ebay data", stringifiedEbayData);
-      } catch (error) {
-        console.error(error);
-      }
+      const fetchSnkListingData = axios.post(`${baseURL}/scrape/used`, {
+        url: searchPrompt,
+      });
+      const fetchEbayData = axios.get(`${baseURL}/ebay?name=${card_name}`);
+
+      const [snkListingResponse, ebayResponse] = await Promise.all([
+        fetchSnkListingData,
+        fetchEbayData,
+      ]);
+
+      console.log(snkListingResponse.data);
+
+      console.log("Response from server after post:", snkListingResponse.data);
+      const stringifiedSNKListingData = JSON.stringify(snkListingResponse.data);
+      sessionStorage.setItem("snk listing data", stringifiedSNKListingData);
+
+      console.log(ebayResponse.data);
+
+      const findItemsByKeywordsResponse =
+        ebayResponse.data.findItemsByKeywordsResponse;
+      console.log(findItemsByKeywordsResponse);
+      const searchResult =
+        ebayResponse.data.findItemsByKeywordsResponse[0].searchResult;
+      console.log(searchResult);
+      const searchResultItem =
+        ebayResponse.data.findItemsByKeywordsResponse[0].searchResult[0].item;
+      console.log(searchResultItem);
+      const stringifiedEbayData = JSON.stringify(searchResultItem);
+      sessionStorage.setItem("ebay data", stringifiedEbayData);
     } catch (error) {
-      console.error(error)
-    } finally {
-      setIsLoading(false)
-      navigate("/compare");
+      console.error(error);
     }
+    setIsLoading(false);
+    navigate("/compare");
   };
+
+  useEffect(() => {
+    const body = document.body;
+    if (isLoading) {
+      body.classList.add("no-scroll");
+    } else {
+      body.classList.remove("no-scroll");
+    }
+
+    // Cleanup function to reset overflow when component unmounts
+    return () => {
+      body.classList.remove("no-scroll");
+    };
+  }, [isLoading]);
 
   return (
     <div className="results">
+      {isLoading === true ? <NinjaLoader className="no-scroll" /> : ""}
       <div className="results__top">
         <h1 className="results__header">SNKRDUNK Result</h1>
         <div className="results__snkr-container">
@@ -90,22 +105,6 @@ const ResultsPage = () => {
             </div>
           </div>
         </div>
-        {/*  <div className="results__bottom">
-          {isLoading ? (
-            <p className="results__loading">Loading...</p>
-          ) : (
-            <div
-              className={`results__ebay-search ${
-                showEbaySearch === true ? "show" : "hidden"
-              }`}
-            >
-              <h2 className="results__ebay-search-header">
-                Enter the above card name:
-              </h2>
-              <EbaySearchBar />
-            </div>
-          )}
-        </div> */}
       </div>
     </div>
   );

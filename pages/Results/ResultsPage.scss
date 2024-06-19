@@ -12,7 +12,7 @@
     &__header {
         @include subheader-mobile;
         font-weight: 500;
-        margin: 16px;
+        padding: 16px;
         color: $cobalt;
     }
 
@@ -65,11 +65,16 @@
         margin: 16px;
     }
 
+    &__loader {
+        position: fixed;
+    z-index: 1000;
+    }
+
     @media only screen and (min-width: $tablet-breakpoint) {
 
         &__header {
             @include page-copy;
-            margin: 36px 90px;
+            padding: 36px 90px;
         }
 
         &__snkr-container {
@@ -83,25 +88,26 @@
         }
 
         &__accept {
-            height: fit-content;
+          /*   height: fit-content;
             align-content: center;
-            width: 300px;
+            width: 300px; */
         }
     
         &__subheader {
             @include subheader;
+            margin-bottom: 16px;
         }
     }
 
     @media only screen and (min-width: $desktop-breakpoint) {
 
         &__snkr-container {
-            flex-direction: row;
+    
         }
 
         &__accept {
-            position: absolute;
-            right: 15%;
+            /* position: absolute;
+            right: 15%; */
         }
     }
 
@@ -149,4 +155,9 @@
 
 .hidden {
     display: none;
+}
+
+
+.no-scroll {
+    overflow: hidden;
 }
