@@ -1,7 +1,9 @@
 import "./CompareSnkrEbay.scss";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CompareSnkEbay = () => {
+  const navigate = useNavigate();
   const scrapedDataObjectFromStorage = sessionStorage.getItem("scraped data");
   const scrapedDataObjectParsed = JSON.parse(scrapedDataObjectFromStorage);
 
@@ -25,41 +27,53 @@ const CompareSnkEbay = () => {
   console.log(snkdunkListingData);
   console.log(snkdunkListingData[0].price);
 
-    //Filter
+  //Filter
 
-    const [snkrFilterBy, setSnkrFilterBy] = useState("All");
-    const [eBayFilterBy, setEbayFilterBy] = useState("All");
+  const [snkrFilterBy, setSnkrFilterBy] = useState("All");
+  const [eBayFilterBy, setEbayFilterBy] = useState("All");
 
-    
-    const updateSnkrFilter = (e) => {
-      setSnkrFilterBy(e.target.value)
-    };
-    
-    const updateEbayFilter = (e) => {
-      setEbayFilterBy(e.target.value)
-    };
-  
-    const dropdownSknrFilterItems = () => {
-      if (snkrFilterBy === "All") {
-        return snkdunkListingData;
-      } else if (snkrFilterBy === "Ungraded") {
-        return snkdunkListingData.filter((listing) => listing.evaluation === "A" || listing.evaluation === "B" || listing.evaluation === "C" || listing.evaluation === "D");
-      } else if (snkrFilterBy === "Graded") {
-        return snkdunkListingData.filter(listing => listing.evaluation.includes("PSA"));
-      } 
-    };
-      
-    /* return snkrFilterBy === "All" ? snkdunkListingData : snkdunkListingData.filter(listing => listing.evaluation === snkrFilterBy);
-    } */
-    const snkrFilteredItems = dropdownSknrFilterItems()
-  
-    const dropdownFilterItems = () => {
-      return eBayFilterBy === "All" ? ebayData : ebayData.filter(listing => listing.condition[0].conditionDisplayName[0] === eBayFilterBy);
+  const updateSnkrFilter = (e) => {
+    setSnkrFilterBy(e.target.value);
+  };
+
+  const updateEbayFilter = (e) => {
+    setEbayFilterBy(e.target.value);
+  };
+
+  const dropdownSknrFilterItems = () => {
+    if (snkrFilterBy === "All") {
+      return snkdunkListingData;
+    } else if (snkrFilterBy === "Ungraded") {
+      return snkdunkListingData.filter(
+        (listing) =>
+          listing.evaluation === "A" ||
+          listing.evaluation === "B" ||
+          listing.evaluation === "C" ||
+          listing.evaluation === "D"
+      );
+    } else if (snkrFilterBy === "Graded") {
+      return snkdunkListingData.filter((listing) =>
+        listing.evaluation.includes("PSA")
+      );
     }
-  
-    const ebayFilteredItems = dropdownFilterItems()
-  
-    console.log(ebayFilteredItems)
+  };
+
+  /* return snkrFilterBy === "All" ? snkdunkListingData : snkdunkListingData.filter(listing => listing.evaluation === snkrFilterBy);
+    } */
+  const snkrFilteredItems = dropdownSknrFilterItems();
+
+  const dropdownFilterItems = () => {
+    return eBayFilterBy === "All"
+      ? ebayData
+      : ebayData.filter(
+          (listing) =>
+            listing.condition[0].conditionDisplayName[0] === eBayFilterBy
+        );
+  };
+
+  const ebayFilteredItems = dropdownFilterItems();
+
+  console.log(ebayFilteredItems);
 
   //pagination
 
@@ -120,25 +134,37 @@ const CompareSnkEbay = () => {
     setCurrentEbayPage(pageNumber);
   };
 
+  const goToEbayListing = (url) => {
+    window.open(url, "_blank");
+  };
 
   return (
     <div className="compare">
       <div className="compare__text">
-      <h1 className="compare__text--pageheader">Card Listings</h1>
-      <p className="compare__text--subheader">You can easily view and compare listings for your favorite cards from both SNKRDunk and eBay. Whether you're looking for graded or ungraded cards, we've got you covered.</p>
+        <h1 className="compare__text--pageheader">Card Listings</h1>
+        <p className="compare__text--subheader">
+          You can easily view and compare listings for your favorite cards from
+          both SNKRDunk and eBay. Whether you're looking for graded or ungraded
+          cards, we've got you covered.
+        </p>
       </div>
       <div className="compare__section">
         <div className="compare__top">
-        <h1 className="compare__subtitle">SNKRDUNK Listings:</h1>
-        <div className="compare__filter">
-          <label className="compare__filter--label">Filter:
-            <select className="compare__filter--dropdown" value={snkrFilterBy} onChange={updateSnkrFilter}>
-              <option>All</option>
-              <option>Ungraded</option>
-              <option>Graded</option>
-            </select>
-          </label>
-        </div>
+          <h1 className="compare__subtitle">SNKRDUNK Listings:</h1>
+          <div className="compare__filter">
+            <label className="compare__filter--label">
+              Filter:
+              <select
+                className="compare__filter--dropdown"
+                value={snkrFilterBy}
+                onChange={updateSnkrFilter}
+              >
+                <option>All</option>
+                <option>Ungraded</option>
+                <option>Graded</option>
+              </select>
+            </label>
+          </div>
         </div>
         <div className="compare__section-listings">
           <div className="snkr-listings">
@@ -151,7 +177,10 @@ const CompareSnkEbay = () => {
                 />
                 <p className="snkr-listings__price">Price: {listing.price}</p>
                 <p className="snkr-listings__evaluation">
-                  Product type: <span className="snkr-listings__evaluation--style">{listing.evaluation}</span>
+                  Product type:{" "}
+                  <span className="snkr-listings__evaluation--style">
+                    {listing.evaluation}
+                  </span>
                 </p>
               </div>
             ))}
@@ -171,22 +200,33 @@ const CompareSnkEbay = () => {
         </div>
       </div>
       <div className="compare__section">
-      <div className="compare__top">
-        <h1 className="compare__subtitle">Ebay Listings:</h1>
-        <div className="compare__filter">
-          <label className="compare__filter--label">Filter:
-            <select className="compare__filter--dropdown" value={eBayFilterBy} onChange={updateEbayFilter}>
-              <option>All</option>
-              <option>Ungraded</option>
-              <option>Graded</option>
-            </select>
-          </label>
-        </div>
+        <div className="compare__top">
+          <h1 className="compare__subtitle">Ebay Listings:</h1>
+          <div className="compare__filter">
+            <label className="compare__filter--label">
+              Filter:
+              <select
+                className="compare__filter--dropdown"
+                value={eBayFilterBy}
+                onChange={updateEbayFilter}
+              >
+                <option>All</option>
+                <option>Ungraded</option>
+                <option>Graded</option>
+              </select>
+            </label>
+          </div>
         </div>
         <div className="compare__section-listings">
           <div className="ebay-listings">
             {currentEbayItems.map((listing, index) => (
-              <div key={index} className="ebay-listings__individual">
+              <div
+                key={index}
+                className="ebay-listings__individual"
+                onClick={() => {
+                  goToEbayListing(listing.viewItemURL);
+                }}
+              >
                 <p className="ebay-listings__title">{listing.title}</p>
                 <img
                   className="ebay-listings__image"
@@ -223,7 +263,11 @@ const CompareSnkEbay = () => {
         </div>
       </div>
       <div>
-        <p className="compare__disclaimer">PLEASE NOTE: This page may not provide all listings on each site. Please search on SNKRDUNK and EBAY for a full view of listings available to you on their platforms.</p>
+        <p className="compare__disclaimer">
+          PLEASE NOTE: This page may not provide all listings on each site.
+          Please search on SNKRDUNK and EBAY for a full view of listings
+          available to you on their platforms.
+        </p>
       </div>
     </div>
   );
