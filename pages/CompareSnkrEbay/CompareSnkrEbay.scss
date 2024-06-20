@@ -24,9 +24,7 @@
         flex-direction: column;
     }
 
-    &__top {
-
-    }
+    &__top {}
 
     &__filter {
         &--label {
@@ -39,28 +37,38 @@
         }
     }
 
-    @media only screen and (min-width: $tablet-breakpoint) { 
+    @media only screen and (min-width: $tablet-breakpoint) {
         &__text {
-            margin: 36px 40px 0 40px;
+            margin: 36px 40px 0 0;
 
             &--pageheader {
                 @include page-copy;
             }
 
             &--subheader {
-                @include body-copy; 
+                @include body-copy;
+                margin-top: 24px;
             }
         }
 
+        &__section {
+            border: 1px solid $black;
+            margin-bottom: 24px;
+            margin-top: 24px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px,
+                rgb(51, 51, 51) 0px 0px 0px 3px;
+        }
+
         &__section-listings {
-            margin: 0 40px;
-        } 
+            padding: 0 16px 16px 16px;
+        }
 
         &__top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 36px 40px 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 36px 40px 24px 40px;
         }
 
         &__subtitle {
@@ -69,32 +77,30 @@
         }
 
         &__filter {
-        &--label {
-            @include small-text;
+            &--label {
+                @include small-text;
+            }
+
+            &--dropdown {
+                margin-left: 8px;
+                padding: 3px 6px;
+                @include small-text;
+                border: 1px solid $cobalt;
+                border-radius: 5px;
+            }
         }
 
-        &--dropdown {
-            margin-left: 8px;
-            padding: 3px 6px;
+        &__disclaimer {
             @include small-text;
-            border: 1px solid $cobalt;
-            border-radius: 5px;
+            margin-top: 36px;
+            display: flex;
+            justify-content: center;
         }
-
-    }
-    &__disclaimer {
-        @include small-text;
-        margin-top: 36px;
-        display: flex;
-        justify-content: center;
-        
-    }
     }
 
-    @media only screen and (min-width: $desktop-breakpoint) { 
+    @media only screen and (min-width: $desktop-breakpoint) {
         margin: 0 90px 36px 90px;
     }
-
 }
 
 
@@ -131,23 +137,20 @@
     }
 
     &__image {
-
         width: 175px;
         height: 200px;
         margin-bottom: 8px;
         border-radius: 5px;
     }
 
-    @media only screen and (min-width: $tablet-breakpoint) { 
+    @media only screen and (min-width: $tablet-breakpoint) {
         gap: 2%;
         justify-content: unset;
 
         &__individual {
             width: 200px;
         }
-
     }
-
 }
 
 .ebay-listings {
@@ -194,25 +197,22 @@
         @include button-label-mobile;
 
         &--type {
-        background-color: $black;
+            background-color: $black;
             color: $white;
             padding: 2px 4px;
-    }
+        }
     }
 
-    @media only screen and (min-width: $tablet-breakpoint) { 
+    @media only screen and (min-width: $tablet-breakpoint) {
         gap: 2%;
         justify-content: unset;
 
         &__individual {
             width: 200px;
         }
-
     }
 
-    @media only screen and (min-width: $desktop-breakpoint) {
-    }
-
+    @media only screen and (min-width: $desktop-breakpoint) {}
 }
 
 .pagination {
@@ -220,20 +220,37 @@
     justify-content: center;
     gap: 5px;
 
+    &__pageNumbers {
+        display: flex;
+        list-style: none;
+    }
+
     &__button {
         border: 1px solid $cobalt;
         width: 20px;
         border-radius: 2px;
         background-color: $white;
+        cursor: pointer;
+        margin: 0 1px;
+    }
 
+    &__controls {
+        border: 1px solid $cobalt;
+        width: 40px;
+        border-radius: 2px;
+        background-color: $white;
+        margin: 0 5px;
+        padding: 1px;
+        cursor: pointer;
     }
 }
 
 .pagination__button[disabled] {
     background-color: $cobalt;
     color: white;
-  }
+}
 
-  .pagination__button:hover {
+.pagination__button:hover {
     cursor: pointer;
-  }
+}
+
