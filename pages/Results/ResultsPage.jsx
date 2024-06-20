@@ -28,6 +28,10 @@ const ResultsPage = () => {
   const [showEbaySearch, setShowEbaySearch] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const onClickHome = async () => {
+    navigate('/');
+  }
+
   const onClick = async (e) => {
     try {
       setIsLoading(true);
@@ -87,24 +91,31 @@ const ResultsPage = () => {
       {isLoading === true ? <NinjaLoader className="no-scroll" /> : ""}
       <div className="results__top">
         <h1 className="results__header">SNKRDUNK Result</h1>
-        <div className="results__snkr-container">
-          <SnkrDunkResults
-            name={scrapedDataObjectParsed.name}
-            image={scrapedDataObjectParsed.thumbnailUrl}
-            price={scrapedDataObjectParsed.usedMinPrice}
-            listings={scrapedDataObjectParsed.usedListingCount}
-          />
-          <div className="results__accept">
-            <h2 className="results__accept-header"></h2>
-            <h3 className="results__subheader">Is this the correct card?</h3>
-            <div className="results__cta">
-              <button className="results__button accept" onClick={onClick}>
-                Yes
-              </button>
-              <button className="results__button decline">No</button>
-            </div>
-          </div>
+        <div className="results__confirm">
+        <p className="results__confirm-header">Confirm the Card</p>
+        <p className="results__confirm-description">Please confirm if the card below is the one you're looking for.</p>
+        <ul className="results__confirm-list">
+          <li className="results__confirm-list--description">
+            Yes: Start pulling listings from SNKRDUNK and eBay. Listings will be
+            displayed on the next page.
+          </li>
+          <li className="results__confirm-list--description">No: Return to the homepage to enter a new SNKRDUNK URL.</li>
+        </ul>
+        <div className="results__cta">
+          <button className="results__button accept" onClick={onClick}>
+            Yes
+          </button>
+          <button className="results__button decline" onClick={onClickHome}>No</button>
         </div>
+        </div>
+      </div>
+      <div className="results__snkr-container">
+        <SnkrDunkResults
+          name={scrapedDataObjectParsed.name}
+          image={scrapedDataObjectParsed.thumbnailUrl}
+          price={scrapedDataObjectParsed.usedMinPrice}
+          listings={scrapedDataObjectParsed.usedListingCount}
+        />
       </div>
     </div>
   );

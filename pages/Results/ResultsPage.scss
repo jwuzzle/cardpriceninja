@@ -6,7 +6,6 @@
 
 .results {
 
-
     &__top {}
 
     &__header {
@@ -16,16 +15,7 @@
         color: $cobalt;
     }
 
-
     &__snkr-container {}
-
-    &__accept {
-        margin: 16px;
-        padding: 16px;
-        border: 1px solid black;
-        border-radius: 5px;
-    }
-
 
     &__subheader {
         @include subheader-mobile;
@@ -45,6 +35,7 @@
         background-color: $white;
         border: 1px solid $cobalt;
         @include button-label-mobile;
+        cursor: pointer;
     }
 
     &__bottom {
@@ -67,50 +58,82 @@
 
     &__loader {
         position: fixed;
-    z-index: 1000;
+        z-index: 1000;
     }
 
     @media only screen and (min-width: $tablet-breakpoint) {
 
+        &__top {
+            display: flex;
+            flex-direction: column;
+            padding: 36px 90px;
+        }
+
         &__header {
             @include page-copy;
-            padding: 36px 90px;
+            padding: unset;
+        }
+
+        &__confirm {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid $cobalt;
+            padding: 36px;
+            margin-top: 36px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px,
+                rgb(51, 51, 51) 0px 0px 0px 3px;
+        }
+
+        &__confirm-header {
+            display: flex;
+            flex-direction: column;
+            @include subheader;
+        }
+
+        &__confirm-description {
+            display: flex;
+            flex-direction: column;
+            @include body-copy;
+            margin-top: 24px;
+        }
+
+        &__confirm-list {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            @include body-copy;
+            margin-top: 24px;
+
+            &--description {
+                @include body-copy;
+                margin-bottom: 8px;
+            }
         }
 
         &__snkr-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            border: 1px solid $cobalt;
-            border-radius: 10px;
-            margin: 36px 90px;
             padding: 36px;
         }
 
-        &__accept {
-          /*   height: fit-content;
-            align-content: center;
-            width: 300px; */
-        }
-    
         &__subheader {
-            @include subheader;
-            margin-bottom: 16px;
+            @include body-copy;
+            margin-right: 16px;
+        }
+
+        &__button {
+            width: unset;
+            margin-left: unset;
+            margin-top: 24px;
+            @include button-label;
+            margin-right: 16px;
         }
     }
 
     @media only screen and (min-width: $desktop-breakpoint) {
-
-        &__snkr-container {
-    
-        }
-
-        &__accept {
-            /* position: absolute;
-            right: 15%; */
-        }
     }
-
 }
 
 
@@ -118,8 +141,9 @@
     @include body-mobile;
 
     @media only screen and (min-width: $tablet-breakpoint) {
-
         @include body-copy;
+        width: 100px;
+        padding: 16px;
     }
 
 
@@ -129,11 +153,10 @@
     @include body-mobile;
 
     @media only screen and (min-width: $tablet-breakpoint) {
-
         @include body-copy;
+        width: 100px;
+        padding: 16px;
     }
-
-
 }
 
 
@@ -156,7 +179,6 @@
 .hidden {
     display: none;
 }
-
 
 .no-scroll {
     overflow: hidden;
