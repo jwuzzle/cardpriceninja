@@ -1,0 +1,156 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.hero {
+    display: flex;
+    width: 100%;
+    margin-top: 50px;
+    overflow: hidden;
+    height: 20vh;
+    min-height: 400px;
+
+    &__headline {
+        display: inline-block;
+        padding-bottom: 30px;
+
+        &--header {
+            @include hero-banner;
+
+        }
+
+    }
+
+    &__divider {
+        border-bottom: 3px solid black;
+        margin-right: 300px;
+    }
+
+    &__text {
+        padding-left: 90px;
+        width: 50%;
+
+
+        &--subheader {
+            margin: 36px 0;
+
+        }
+
+
+    }
+
+
+    &__image {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-left: 36px;
+
+        &--shape {
+            width: 100vw;
+            height: 100%;
+            background-color: $cobalt;
+            opacity: .5;
+            border-radius: 300px 0 0 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-left: 100px;
+        }
+
+        &--card {
+            position: relative;
+            width: 300px;
+        }
+    }
+
+}
+
+
+.first {
+    font-weight: 500;
+}
+
+.second {
+    display: inline-block;
+    white-space: normal;
+    font-weight: 700;
+
+}
+
+.one {
+    /* left: 300px; */
+}
+
+.two {
+    /* left: -250px; */
+}
+
+.three {
+    /*   left: 200px; */
+}
+
+
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+
+    &__heading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &--title {
+            margin-bottom: 36px;
+        }
+
+        &--description {
+            margin-bottom: 65px;
+
+        }
+    }
+
+    &__features {
+        display: flex;
+        justify-content: center;
+        width: 75%;
+
+    }
+
+    &__image {
+        width: 50%; 
+
+        &--scale {
+            width: 70%;
+        }
+    }
+
+    &__feature-list {
+        width: 50%;
+    }
+}
+
+.feature-list {
+
+    /* list-style-image: url('path-to-your-image.png'); */
+    &__main {
+        margin-bottom: 10px;
+    }
+
+    &__description {
+        display: block;
+        margin-top: 5px;
+        font-style: italic;
+    }
+}
+
+.home-divider {
+    border: 2px solid $black;
+    margin: 90px 500px 0 500px;
+}

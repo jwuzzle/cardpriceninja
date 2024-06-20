@@ -1,0 +1,62 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.homeimages {
+    display: flex;
+    position: absolute;
+
+    &__card {
+        width: 200px;
+    }
+}
+
+.index-0 {
+  /*   z-index: 10; */
+    top: 20px;
+    position: relative;
+}
+
+.index-1 {
+    /*   z-index: 10; */
+ 
+  position: relative;
+   
+  }
+
+  .index-2 {
+    /*   z-index: 10; */
+    top: 20px;
+      position: relative;
+  }
+
+  .index-3 {
+    /*   z-index: 10; */
+  
+      position: relative;
+  }
+
+  .index-4 {
+    /*   z-index: 10; */
+    top: 20px;
+      position: relative;
+  }
+
+
+  .index-0:hover {
+    width: 210px;
+  }
+  .index-1:hover {
+    width: 210px;
+  }
+  .index-2:hover {
+    width: 210px;
+  }
+  .index-3:hover {
+    width: 210px;
+  }
+  .index-4:hover {
+    width: 210px;
+  }

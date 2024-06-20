@@ -5,6 +5,8 @@ import Home from '../pages/Home/Home';
 import ResultsPage from '../pages/Results/ResultsPage';
 import CompareSnkEbay from '../pages/CompareSnkrEbay/CompareSnkrEbay';
 import NinjaLoader from '../components/NinjaLoader/NinjaLoader';
+import Home2 from '../pages/Home2/Home2';
+import Footer from '../components/Footer/Footer';
 
 
 function App() {
@@ -19,7 +21,9 @@ function App() {
       <Route path="/results" element={<ResultsPage />} />
       <Route path="/compare" element={<CompareSnkEbay />} />
       <Route path="/loader" element={<NinjaLoader />} />
+      <Route path="/2" element={<Home2 />} />
     </Routes>
+    <Footer />
     </BrowserRouter>
     </>
   )
