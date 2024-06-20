@@ -1,6 +1,7 @@
 import "./CompareSnkrEbay.scss";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Pagination from "../../components/Pagination/Pagination";
 
 const CompareSnkEbay = () => {
   const navigate = useNavigate();
@@ -19,13 +20,6 @@ const CompareSnkEbay = () => {
   const snkrdunkData = scrapedDataObjectParsed;
   const snkdunkListingData = scrapedSNKListingDataObjectParsed;
   const ebayData = ebayDataObjectParsed;
-
-  console.log(ebayData);
-  console.log(ebayData[0].title);
-  console.log(scrapedSNKListingDataObjectParsed);
-
-  console.log(snkdunkListingData);
-  console.log(snkdunkListingData[0].price);
 
   //Filter
 
@@ -58,22 +52,19 @@ const CompareSnkEbay = () => {
     }
   };
 
-  /* return snkrFilterBy === "All" ? snkdunkListingData : snkdunkListingData.filter(listing => listing.evaluation === snkrFilterBy);
-    } */
   const snkrFilteredItems = dropdownSknrFilterItems();
 
   const dropdownFilterItems = () => {
-    return eBayFilterBy === "All"
-      ? ebayData
-      : ebayData.filter(
-          (listing) =>
-            listing.condition[0].conditionDisplayName[0] === eBayFilterBy
-        );
+    if (!ebayData) return [];
+    if (eBayFilterBy === "All") {
+      return ebayData;
+    }ß
+    return ebayData.filter(
+      (listing) =>
+        listing.condition?.[0]?.conditionDisplayName?.[0] === eBayFilterBy
+    );
   };
-
   const ebayFilteredItems = dropdownFilterItems();
-
-  console.log(ebayFilteredItems);
 
   //pagination
 
@@ -82,6 +73,10 @@ const CompareSnkEbay = () => {
 
   const [currentEbayPage, setCurrentEbayPage] = useState(1);
   const [ebayItemsPerPage, setEbayItemsPerPage] = useState(2);
+
+  const [pageNumberLimit, setPageNumberLimit] = useState(5);
+  const [maxpageNumberLimit, setMaxpageNumberLimit] = useState(5);
+  const [minpageNumberLimit, setMinpageNumberLimit] = useState(0);
 
   const updateItemsPerPage = () => {
     if (window.innerWidth < 768) {
@@ -119,6 +114,44 @@ const CompareSnkEbay = () => {
     setCurrentPage(pageNumber);
   };
 
+  const renderSknrPageNumbers = Array.from(
+    { length: totalPages },
+    (_, index) => {
+      if (index < maxpageNumberLimit + 1 && index >= minpageNumberLimit - 1) {
+        return (
+          <button
+            className="pagination__button"
+            key={index}
+            onClick={() => handlePageChange(index + 1)}
+            disabled={currentPage === index + 1}
+          >
+            {index + 1}
+          </button>
+        );
+      } else {
+        return null;
+      }
+    }
+  );
+
+  const handleNextBtnSnkr = () => {
+    setCurrentPage(currentPage + 1);
+
+    if (currentPage + 1 > maxpageNumberLimit) {
+      setMaxpageNumberLimit(maxpageNumberLimit + pageNumberLimit);
+      setMinpageNumberLimit(minpageNumberLimit + pageNumberLimit);
+    }
+  };
+
+  const handlePrevBtnSnkr = () => {
+    setCurrentPage(currentPage - 1);
+
+    if ((currentPage - 1) % pageNumberLimit == 0) {
+      setMaxpageNumberLimit(maxpageNumberLimit - pageNumberLimit);
+      setMinpageNumberLimit(minpageNumberLimit - pageNumberLimit);
+    }
+  };
+
   //ebay listing pagination
 
   const indexOfLastEbayItem = currentEbayPage * ebayItemsPerPage;
@@ -137,6 +170,54 @@ const CompareSnkEbay = () => {
   const goToEbayListing = (url) => {
     window.open(url, "_blank");
   };
+
+  const handleNextBtn = () => {
+    setCurrentEbayPage(currentEbayPage + 1);
+
+    if (currentEbayPage + 1 > maxpageNumberLimit) {
+      setMaxpageNumberLimit(maxpageNumberLimit + pageNumberLimit);
+      setMinpageNumberLimit(minpageNumberLimit + pageNumberLimit);
+    }
+  };
+
+  const handlePrevBtn = () => {
+    setCurrentEbayPage(currentEbayPage - 1);
+
+    if ((currentEbayPage - 1) % pageNumberLimit == 0) {
+      setMaxpageNumberLimit(maxpageNumberLimit - pageNumberLimit);
+      setMinpageNumberLimit(minpageNumberLimit - pageNumberLimit);
+    }
+  };
+
+  const renderEbayPageNumbers = Array.from(
+    { length: totalEbayPages },
+    (_, index) => {
+      if (index < maxpageNumberLimit + 1 && index >= minpageNumberLimit - 1) {
+        return (
+          <button
+            className="pagination__button"
+            key={index}
+            onClick={() => handleEbayPageChange(index + 1)}
+            disabled={currentEbayPage === index + 1}
+          >
+            {index + 1}
+          </button>
+        );
+      } else {
+        return null;
+      }
+    }
+  );
+
+  let pageIncrementBtn = null;
+  if (currentEbayPage < maxpageNumberLimit) {
+    pageIncrementBtn = <li onClick={handleNextBtn}> &hellip; </li>;
+  }
+
+  let pageDecreaseBtn = null;
+  if (currentEbayPage >= maxpageNumberLimit) {
+    pageDecreaseBtn = <li onClick={handlePrevBtn}> &hellip; </li>;
+  }
 
   return (
     <div className="compare">
@@ -186,16 +267,27 @@ const CompareSnkEbay = () => {
             ))}
           </div>
           <div className="pagination">
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                className="pagination__button"
-                key={index}
-                onClick={() => handlePageChange(index + 1)}
-                disabled={currentPage === index + 1}
-              >
-                {index + 1}
-              </button>
-            ))}
+            <ul className="pagination__pageNumbers">
+              <li>
+                <button
+                  className="pagination__controls"
+                  onClick={handlePrevBtnSnkr}
+                  disabled={currentPage == 1 ? true : false}
+                >
+                  Prev
+                </button>
+              </li>
+              {renderSknrPageNumbers}
+              <li>
+                <button
+                  className="pagination__controls"
+                  onClick={handleNextBtnSnkr}
+                  disabled={currentPage == totalPages ? true : false}
+                >
+                  Next
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -249,16 +341,29 @@ const CompareSnkEbay = () => {
             ))}
           </div>
           <div className="pagination">
-            {Array.from({ length: totalEbayPages }, (_, index) => (
-              <button
-                className="pagination__button"
-                key={index}
-                onClick={() => handleEbayPageChange(index + 1)}
-                disabled={currentEbayPage === index + 1}
-              >
-                {index + 1}
-              </button>
-            ))}
+            <ul className="pagination__pageNumbers">
+              <li>
+                <button
+                  className="pagination__controls"
+                  onClick={handlePrevBtn}
+                  disabled={currentEbayPage == 1 ? true : false}
+                >
+                  Prev
+                </button>
+              </li>
+              {pageDecreaseBtn}
+              {renderEbayPageNumbers}
+              {pageIncrementBtn}
+              <li>
+                <button
+                  className="pagination__controls"
+                  onClick={handleNextBtn}
+                  disabled={currentEbayPage == totalEbayPages ? true : false}
+                >
+                  Next
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
