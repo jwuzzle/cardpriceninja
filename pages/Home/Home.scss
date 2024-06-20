@@ -161,9 +161,9 @@
 
 
 .product {
-    margin-top: 300px;
+   /*  margin-top: 300px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; */
 
     &__header {
         @include subheader;
