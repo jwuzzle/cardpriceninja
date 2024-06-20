@@ -46,17 +46,17 @@ const Home2 = () => {
             </div>
             <div className="product__feature-list">
                 <ul className="feature-list">
-                    <li className="feature-list__main">Comprehensive Listings:
-                        <span className="feature-list__description">Access all available listings for your desired card from SNKRDunk and eBay.</span> 
+                    <li className="feature-list__main">Comprehensive Listings
+                        <span className="feature-list__description">Access available listings for your desired card from SNKRDunk and eBay.</span> 
                     </li>
-                    <li className="feature-list__main">Graded vs. Ungraded:
+                    <li className="feature-list__main">Graded vs. Ungraded
                         <span className="feature-list__description">Compare the prices and conditions of graded and ungraded cards side-by-side.</span> 
                     </li>
-                    <li className="feature-list__main">Best Deals:
+                    <li className="feature-list__main">Best Deals
                         <span className="feature-list__description">Determine which site offers the best deal for the card you want to buy.</span> 
                     </li>
-                    <li className="feature-list__main">Informed Decision:
-                        <span className="feature-list__description">Make an informed purchase decision by comparing prices, conditions, and seller reputations across both platforms.</span> 
+                    <li className="feature-list__main">Informed Decision
+                        <span className="feature-list__description">Make an informed purchase decision by comparing prices and conditions across both platforms.</span> 
                     </li>
                 </ul>
             </div>

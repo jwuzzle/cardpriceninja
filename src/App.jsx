@@ -17,11 +17,10 @@ function App() {
     <BrowserRouter>
     <Navbar />
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home2 />} />
       <Route path="/results" element={<ResultsPage />} />
       <Route path="/compare" element={<CompareSnkEbay />} />
       <Route path="/loader" element={<NinjaLoader />} />
-      <Route path="/2" element={<Home2 />} />
     </Routes>
     <Footer />
     </BrowserRouter>
