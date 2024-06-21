@@ -58,7 +58,7 @@ const CompareSnkEbay = () => {
     if (!ebayData) return [];
     if (eBayFilterBy === "All") {
       return ebayData;
-    }ß
+    }
     return ebayData.filter(
       (listing) =>
         listing.condition?.[0]?.conditionDisplayName?.[0] === eBayFilterBy
