@@ -231,7 +231,7 @@ const CompareSnkEbay = () => {
       </div>
       <div className="compare__section">
         <div className="compare__top">
-          <h1 className="compare__subtitle">SNKRDUNK Listings:</h1>
+          <h1 className="compare__subtitle">SNKRDUNK Listings</h1>
           <div className="compare__filter">
             <label className="compare__filter--label">
               Filter:
@@ -293,7 +293,7 @@ const CompareSnkEbay = () => {
       </div>
       <div className="compare__section">
         <div className="compare__top">
-          <h1 className="compare__subtitle">Ebay Listings:</h1>
+          <h1 className="compare__subtitle">Ebay Listings</h1>
           <div className="compare__filter">
             <label className="compare__filter--label">
               Filter:
