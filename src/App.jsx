@@ -7,6 +7,7 @@ import CompareSnkEbay from '../pages/CompareSnkrEbay/CompareSnkrEbay';
 import NinjaLoader from '../components/NinjaLoader/NinjaLoader';
 import Home2 from '../pages/Home2/Home2';
 import Footer from '../components/Footer/Footer';
+import Tooltip from '../components/Tooltip/Tooltip';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Route path="/results" element={<ResultsPage />} />
       <Route path="/compare" element={<CompareSnkEbay />} />
       <Route path="/loader" element={<NinjaLoader />} />
+      <Route path="/trigger" element={<Tooltip />} />
     </Routes>
     <Footer />
     </BrowserRouter>

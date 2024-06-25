@@ -6,6 +6,7 @@ import "./ResultsPage.scss";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NinjaLoader from "../../components/NinjaLoader/NinjaLoader";
+import ConfirmCard from "../../components/ConfirmCard/ConfirmCard";
 
 const baseURL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -29,10 +30,11 @@ const ResultsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const onClickHome = async () => {
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   const onClick = async (e) => {
+    let hasError = false;
     try {
       setIsLoading(true);
 
@@ -46,11 +48,20 @@ const ResultsPage = () => {
         fetchEbayData,
       ]);
 
-      console.log(snkListingResponse.data);
+      console.log("SNK and eBay API requests completed.");
 
-      console.log("Response from server after post:", snkListingResponse.data);
-      const stringifiedSNKListingData = JSON.stringify(snkListingResponse.data);
-      sessionStorage.setItem("snk listing data", stringifiedSNKListingData);
+      console.log("SNK Listing Response:", snkListingResponse.data);
+
+      if (snkListingResponse.data.length > 0) {
+        const stringifiedSNKListingData = JSON.stringify(
+          snkListingResponse.data
+        );
+        sessionStorage.setItem("snk listing data", stringifiedSNKListingData);
+      } else {
+        console.warn("SNK listing data is empty or undefined");
+        alert("There was an error processing your request. Please try again.");
+        hasError = true;
+      }
 
       console.log(ebayResponse.data);
 
@@ -69,7 +80,9 @@ const ResultsPage = () => {
       console.error(error);
     }
     setIsLoading(false);
-    navigate("/compare");
+    if (!hasError) {
+      navigate("/compare");
+    }
   };
 
   useEffect(() => {
@@ -90,24 +103,6 @@ const ResultsPage = () => {
     <div className="results">
       {isLoading === true ? <NinjaLoader className="no-scroll" /> : ""}
       <div className="results__top">
-        <h1 className="results__header">SNKRDUNK Result</h1>
-        <div className="results__confirm">
-        <p className="results__confirm-header">Confirm the Card</p>
-        <p className="results__confirm-description">Please confirm if the card below is the one you're looking for.</p>
-        <ul className="results__confirm-list">
-          <li className="results__confirm-list--description">
-            Yes: Start pulling listings from SNKRDUNK and eBay. Listings will be
-            displayed on the next page.
-          </li>
-          <li className="results__confirm-list--description">No: Return to the homepage to enter a new SNKRDUNK URL.</li>
-        </ul>
-        <div className="results__cta">
-          <button className="results__button accept" onClick={onClick}>
-            Yes
-          </button>
-          <button className="results__button decline" onClick={onClickHome}>No</button>
-        </div>
-        </div>
       </div>
       <div className="results__snkr-container">
         <SnkrDunkResults
@@ -116,6 +111,7 @@ const ResultsPage = () => {
           price={scrapedDataObjectParsed.usedMinPrice}
           listings={scrapedDataObjectParsed.usedListingCount}
         />
+        <ConfirmCard onClickYes={onClick} onClickNo={onClickHome} />
       </div>
     </div>
   );

@@ -1,0 +1,124 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.confirm {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $cobalt;
+    padding: 36px;
+    margin-top: 36px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px,
+        rgb(51, 51, 51) 0px 0px 0px 3px;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        @include subheader;
+    }
+
+    &__description {
+        display: flex;
+        flex-direction: column;
+        @include body-copy;
+        margin-top: 24px;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        @include body-copy;
+        margin-top: 24px;
+
+        &--description {
+            @include body-copy;
+            margin-bottom: 8px;
+        }
+    }
+
+    &__button-accept {
+        padding: 4px;
+        border-radius: 5px;
+        background-color: $white;
+        border: 1px solid $cobalt;
+        cursor: pointer;
+        width: unset;
+        margin-left: unset;
+        @include body-copy;
+        width: 100px;
+        padding: 16px;
+    }
+
+    &__button-decline {
+        padding: 4px;
+        border-radius: 5px;
+        background-color: $white;
+        border: 1px solid $cobalt;
+        cursor: pointer;
+        width: unset;
+        margin-left: unset;
+        @include body-copy;
+        width: 100px;
+        padding: 16px;
+    }
+
+}
+
+
+.confirm__button-accept:hover {
+    background-color: $cobalt;
+    color: $white;
+    font-weight: 600;
+    opacity: .6;
+}
+
+.confirm__button-decline:hover {
+    background-color: $red;
+    border: 1px solid $red;
+    color: $white;
+    font-weight: 600;
+    opacity: .6;
+}
+
+.cta {
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+}
+
+.cta-group {
+    display: flex;
+    margin-top: 24px;
+}
+
+.confirm__button-accept:hover {
+    background-color: $cobalt;
+    color: $white;
+    font-weight: 600;
+    opacity: .6;
+}
+
+.confirm__button-decline:hover {
+    background-color: $red;
+    border: 1px solid $red;
+    color: $white;
+    font-weight: 600;
+    opacity: .6;
+}
+
+
+
+// mobile
+/* width: 40%;
+margin-left: 5px;
+margin-top: 8px;
+padding: 4px;
+border-radius: 5px;
+background-color: $white;
+border: 1px solid $cobalt;
+@include button-label-mobile;
+cursor: pointer; */
