@@ -8,6 +8,7 @@ import NinjaLoader from '../components/NinjaLoader/NinjaLoader';
 import Home2 from '../pages/Home2/Home2';
 import Footer from '../components/Footer/Footer';
 import Tooltip from '../components/Tooltip/Tooltip';
+import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
+    <ScrollToTop />
     <Navbar />
     <Routes>
       <Route path="/" element={<Home2 />} />
