@@ -100,8 +100,9 @@ const ResultsPage = () => {
   }, [isLoading]);
 
   return (
+    <>
+    {isLoading === true ? <NinjaLoader className="no-scroll" /> : ""}
     <div className="results">
-      {isLoading === true ? <NinjaLoader className="no-scroll" /> : ""}
       <div className="results__top">
       </div>
       <div className="results__snkr-container">
@@ -114,6 +115,7 @@ const ResultsPage = () => {
         <ConfirmCard onClickYes={onClick} onClickNo={onClickHome} />
       </div>
     </div>
+    </>
   );
 };
 
