@@ -152,6 +152,10 @@ const CompareSnkEbay = () => {
     }
   };
 
+  const goToSNKRListing = (url) => {
+    window.open(`https://snkrdunk.com${url}`, "_blank");
+  };
+
   //ebay listing pagination
 
   const indexOfLastEbayItem = currentEbayPage * ebayItemsPerPage;
@@ -250,7 +254,9 @@ const CompareSnkEbay = () => {
         <div className="compare__section-listings">
           <div className="snkr-listings">
             {currentItems.map((listing, index) => (
-              <div key={index} className="snkr-listings__individual">
+              <div key={index} className="snkr-listings__individual" onClick={() => {
+                goToSNKRListing(listing.snkrurl);
+              }}>
                 <img
                   className="snkr-listings__image"
                   src={listing.image}
@@ -263,6 +269,7 @@ const CompareSnkEbay = () => {
                     {listing.evaluation}
                   </span>
                 </p>
+                
               </div>
             ))}
           </div>

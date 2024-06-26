@@ -119,6 +119,7 @@
         padding: 16px;
         border-radius: 5px;
         box-shadow: rgba(0, 75, 173, 0.649) 0px 2px 8px 0px;
+        cursor: pointer;
     }
 
     &__price {
@@ -254,3 +255,6 @@
     cursor: pointer;
 }
 
+.snkr-listings__individual:hover {
+    background-color: $lightgray;
+}
