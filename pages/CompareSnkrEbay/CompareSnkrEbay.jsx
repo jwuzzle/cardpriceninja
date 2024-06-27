@@ -152,9 +152,9 @@ const CompareSnkEbay = () => {
     }
   };
 
-  const goToSNKRListing = (url) => {
+  /* const goToSNKRListing = (url) => {
     window.open(`https://snkrdunk.com${url}`, "_blank");
-  };
+  }; */
 
   //ebay listing pagination
 
@@ -223,6 +223,43 @@ const CompareSnkEbay = () => {
     pageDecreaseBtn = <li onClick={handlePrevBtn}> &hellip; </li>;
   }
 
+  //compare select
+
+  const [compareArray, setCompareArray] = useState([]);
+  const [compareButton, setCompareButton] = useState(false);
+  console.log(compareButton);
+
+  const clickSnkrDunkListing = (listing) => {
+    if (compareButton === false) {
+      return window.open(`https://snkrdunk.com${listing.snkrurl}`, "_blank");
+    } 
+  };
+
+  const toggleItem = (listing) => {
+    console.log(listing);
+    console.log(listing.image);
+    setCompareArray((prevSelectedItems) => {
+      const isItemInArray = prevSelectedItems.some(
+        (item) => item.image === listing.image
+      );
+
+      if (isItemInArray) {
+        return prevSelectedItems.filter((item) => item.image !== listing.image);
+      } else {
+        return [
+          { price: listing.price, image: listing.image },
+          ...prevSelectedItems,
+        ];
+      }
+    });
+  };
+
+  const isItemSelected = (listing) => {
+    return compareArray.some(item => item.image === listing.image);
+  };
+
+  console.log(compareArray);
+
   return (
     <div className="compare">
       <div className="compare__text">
@@ -250,13 +287,35 @@ const CompareSnkEbay = () => {
               </select>
             </label>
           </div>
+          <button
+            onClick={() => {
+              setCompareButton(!compareButton);
+            }}
+          >
+            Compare
+          </button>
         </div>
         <div className="compare__section-listings">
           <div className="snkr-listings">
             {currentItems.map((listing, index) => (
-              <div key={index} className="snkr-listings__individual" onClick={() => {
-                goToSNKRListing(listing.snkrurl);
-              }}>
+              <div
+                key={index}
+                className="snkr-listings__individual"
+                onClick={() => {
+                  clickSnkrDunkListing(listing);
+                }}
+              >
+                {compareButton === true ? (<input
+                  key={index}
+                  name="list"
+                  type="checkbox"
+                  onClick={() => {
+                    toggleItem(listing);
+                  }}
+                  label="Add"
+                  className="listTour"
+                  checked={isItemSelected(listing)}
+                />) : (null)}
                 <img
                   className="snkr-listings__image"
                   src={listing.image}
@@ -269,7 +328,6 @@ const CompareSnkEbay = () => {
                     {listing.evaluation}
                   </span>
                 </p>
-                
               </div>
             ))}
           </div>
