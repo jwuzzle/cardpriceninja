@@ -136,7 +136,6 @@ const CompareSnkEbay = () => {
 
   const handleNextBtnSnkr = () => {
     setCurrentPage(currentPage + 1);
-
     if (currentPage + 1 > maxpageNumberLimit) {
       setMaxpageNumberLimit(maxpageNumberLimit + pageNumberLimit);
       setMinpageNumberLimit(minpageNumberLimit + pageNumberLimit);
@@ -145,16 +144,11 @@ const CompareSnkEbay = () => {
 
   const handlePrevBtnSnkr = () => {
     setCurrentPage(currentPage - 1);
-
     if ((currentPage - 1) % pageNumberLimit == 0) {
       setMaxpageNumberLimit(maxpageNumberLimit - pageNumberLimit);
       setMinpageNumberLimit(minpageNumberLimit - pageNumberLimit);
     }
   };
-
-  /* const goToSNKRListing = (url) => {
-    window.open(`https://snkrdunk.com${url}`, "_blank");
-  }; */
 
   //ebay listing pagination
 
@@ -171,13 +165,8 @@ const CompareSnkEbay = () => {
     setCurrentEbayPage(pageNumber);
   };
 
-  const goToEbayListing = (url) => {
-    window.open(url, "_blank");
-  };
-
   const handleNextBtn = () => {
     setCurrentEbayPage(currentEbayPage + 1);
-
     if (currentEbayPage + 1 > maxpageNumberLimit) {
       setMaxpageNumberLimit(maxpageNumberLimit + pageNumberLimit);
       setMinpageNumberLimit(minpageNumberLimit + pageNumberLimit);
@@ -186,7 +175,6 @@ const CompareSnkEbay = () => {
 
   const handlePrevBtn = () => {
     setCurrentEbayPage(currentEbayPage - 1);
-
     if ((currentEbayPage - 1) % pageNumberLimit == 0) {
       setMaxpageNumberLimit(maxpageNumberLimit - pageNumberLimit);
       setMinpageNumberLimit(minpageNumberLimit - pageNumberLimit);
@@ -226,18 +214,23 @@ const CompareSnkEbay = () => {
   //compare select
 
   const [compareArray, setCompareArray] = useState([]);
+  const [compareEbayArray, setCompareEbayArray] = useState([]);
   const [compareButton, setCompareButton] = useState(false);
-  console.log(compareButton);
+  const [submitCompare, setSubmitCompare] = useState(false);
 
   const clickSnkrDunkListing = (listing) => {
     if (compareButton === false) {
       return window.open(`https://snkrdunk.com${listing.snkrurl}`, "_blank");
-    } 
+    }
+  };
+
+  const goToEbayListing = (url) => {
+    if (compareButton === false) {
+      return window.open(url, "_blank");
+    }
   };
 
   const toggleItem = (listing) => {
-    console.log(listing);
-    console.log(listing.image);
     setCompareArray((prevSelectedItems) => {
       const isItemInArray = prevSelectedItems.some(
         (item) => item.image === listing.image
@@ -255,13 +248,70 @@ const CompareSnkEbay = () => {
   };
 
   const isItemSelected = (listing) => {
-    return compareArray.some(item => item.image === listing.image);
+    return compareArray.some((item) => item.image === listing.image);
+  };
+
+  const toggleEbayItem = (listing) => {
+    const itemIdStr = listing.itemId.join();
+    setCompareEbayArray((prevSelectedItems) => {
+      const isEbayItemInArray = prevSelectedItems.some(
+        (item) => item.itemId === itemIdStr
+      );
+
+      if (isEbayItemInArray) {
+        return prevSelectedItems.filter((item) => item.itemId !== itemIdStr);
+      } else {
+        return [
+          {
+            itemId: itemIdStr,
+            price: listing.sellingStatus[0].currentPrice[0].__value__,
+            image: listing.viewItemURL,
+          },
+          ...prevSelectedItems,
+        ];
+      }
+    });
+  };
+
+  const isEbayItemSelected = (listing) => {
+    const itemIdEbayStr = listing.itemId.join();
+    console.log(itemIdEbayStr);
+    console.log(
+      "Item ID from compareEbayArray:",
+      compareEbayArray.some((item) => item.itemId.toString())
+    );
+    console.log("Item ID from listing:", itemIdEbayStr);
+    return compareEbayArray.some(
+      (item) => item.itemId.toString() === itemIdEbayStr
+    );
   };
 
   console.log(compareArray);
+  console.log(compareEbayArray);
+
+  console.log("compare button:", compareButton);
+  console.log("submit button:", submitCompare);
+
+  const compareSubmit = () => {
+    setSubmitCompare(false);
+    const stringifiedSnkrCompareListings = JSON.stringify(compareArray);
+    sessionStorage.setItem(
+      "snkr listings for compare",
+      stringifiedSnkrCompareListings
+    );
+
+    const stringifiedEbayCompareListings = JSON.stringify(compareEbayArray);
+    sessionStorage.setItem(
+      "ebay listings for compare",
+      stringifiedEbayCompareListings
+    );
+
+    navigate('/compare-listings');
+  };
 
   return (
     <div className="compare">
+      <div className="compare__header-top">
       <div className="compare__text">
         <h1 className="compare__text--pageheader">Card Listings</h1>
         <p className="compare__text--subheader">
@@ -270,6 +320,31 @@ const CompareSnkEbay = () => {
           cards, we've got you covered.
         </p>
       </div>
+      <div className="compare__button">
+          {!compareButton ? (
+            <button
+            className="compare__button--compare"
+              onClick={() => {
+                setCompareButton(!compareButton);
+                setSubmitCompare(!submitCompare);
+              }}
+            >
+              Compare Listings
+            </button>
+          ) : undefined}
+          {submitCompare ? (
+            <button
+            className="compare__button--submit"
+              onClick={() => {
+                compareSubmit();
+                setCompareButton(!compareButton);
+              }}
+            >
+              Submit
+            </button>
+          ) : undefined}
+          </div>
+          </div>
       <div className="compare__section">
         <div className="compare__top">
           <h1 className="compare__subtitle">SNKRDUNK Listings</h1>
@@ -287,13 +362,6 @@ const CompareSnkEbay = () => {
               </select>
             </label>
           </div>
-          <button
-            onClick={() => {
-              setCompareButton(!compareButton);
-            }}
-          >
-            Compare
-          </button>
         </div>
         <div className="compare__section-listings">
           <div className="snkr-listings">
@@ -301,21 +369,23 @@ const CompareSnkEbay = () => {
               <div
                 key={index}
                 className="snkr-listings__individual"
-                onClick={() => {
+                onChange={() => {
                   clickSnkrDunkListing(listing);
                 }}
               >
-                {compareButton === true ? (<input
-                  key={index}
-                  name="list"
-                  type="checkbox"
-                  onClick={() => {
-                    toggleItem(listing);
-                  }}
-                  label="Add"
-                  className="listTour"
-                  checked={isItemSelected(listing)}
-                />) : (null)}
+                {compareButton === true ? (
+                  <input
+                    key={index}
+                    name="compare"
+                    type="checkbox"
+                    onChange={() => {
+                      toggleItem(listing);
+                    }}
+                    label="compare"
+                    className="compare-box"
+                    checked={isItemSelected(listing)}
+                  />
+                ) : null}
                 <img
                   className="snkr-listings__image"
                   src={listing.image}
@@ -384,6 +454,19 @@ const CompareSnkEbay = () => {
                   goToEbayListing(listing.viewItemURL);
                 }}
               >
+                {compareButton === true ? (
+                  <input
+                    key={index}
+                    name="compare"
+                    type="checkbox"
+                    onChange={(e) => {
+                      toggleEbayItem(listing);
+                    }}
+                    label="compare"
+                    className="compare-box"
+                    checked={isEbayItemSelected(listing)}
+                  />
+                ) : null}
                 <p className="ebay-listings__title">{listing.title}</p>
                 <img
                   className="ebay-listings__image"

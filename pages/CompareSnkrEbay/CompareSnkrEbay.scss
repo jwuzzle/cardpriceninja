@@ -9,6 +9,39 @@
     flex-direction: column;
     align-content: space-between;
 
+    &__header-top {
+        display: flex;
+    }
+
+    &__button {
+        align-self: end;
+
+        &--compare {
+            border: 1px solid $cobalt;
+            width: 150px;
+            border-radius: 5px;
+            background-color: $white;
+            cursor: pointer;
+            margin: 0 1px;
+            padding: 8px;
+            color: $cobalt;
+        }
+
+        &--submit {
+            border: 1px solid $cobalt;
+            width: 150px;
+            border-radius: 5px;
+            background-color: $white;
+            cursor: pointer;
+            margin: 0 1px;
+            padding: 8px;
+            color: $cobalt;
+        }
+
+    }
+
+
+
     &__section {
         display: flex;
         flex-direction: column;
@@ -38,6 +71,21 @@
     }
 
     @media only screen and (min-width: $tablet-breakpoint) {
+
+        &__header-top {
+            display: flex;
+        }
+
+        &__compare-button {
+            align-self: end;
+            border: 1px solid $cobalt;
+            width: 20px;
+            border-radius: 2px;
+            background-color: $white;
+            cursor: pointer;
+            margin: 0 1px;
+        }
+
         &__text {
             margin: 36px 40px 0 0;
 
@@ -257,4 +305,16 @@
 
 .snkr-listings__individual:hover {
     background-color: $lightgray;
+}
+
+.compare__button--compare:hover, .compare__button--submit:hover  {
+    border: 1px solid $cobalt;
+            width: 150px;
+            border-radius: 5px;
+            background-color: $cobalt;
+            cursor: pointer;
+            margin: 0 1px;
+            padding: 8px;
+            color: $white;
+            font-size: 600;
 }
