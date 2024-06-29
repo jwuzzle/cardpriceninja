@@ -1,0 +1,124 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.compare-page {
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        margin: 36px 90px 0 90px;
+    }
+}
+
+
+.table {
+
+    display: flex;
+    /* border: 1px solid $black; */
+    margin: 36px 90px;
+
+
+    &__headers {
+        display: flex;
+        flex-direction: column;
+        width: 100px;
+        display: flex;
+            align-items: center;
+
+        &--site {
+            width: 100%;
+            border-right: 1px solid $black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 0;
+            height: 25px;
+        }
+
+        &--image {
+            height: 350px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid $black;
+            border-top: 1px solid $black;
+            border-bottom: 1px solid $black;
+            padding: 16px 0;
+        }
+
+        &--price {
+            width: 100%;
+            border-right: 1px solid $black;
+            border-bottom: 1px solid $black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 0;
+            height: 25px;
+        }
+
+        &--type {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 0;
+            height: 75px;
+            border-right: .5px solid $black;
+            border-bottom: .5px solid $black;
+        }
+    }
+
+    &__listing-type {
+        width: 100%;
+            border-right: .5px solid $black;
+            border-bottom: .5px solid $black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 0;
+            height: 75px;
+    }
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__columns {
+        display: flex;
+    }
+
+    &__listing {
+        display: flex;
+        flex-direction: column;
+        width: 320px;
+    }
+
+    &__listing-image-container {
+        width: 200px;
+        height: 300px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__listing-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+}
+
+
+
+.table_headers {
+    display: flex;
+    flex-direction: column;
+}

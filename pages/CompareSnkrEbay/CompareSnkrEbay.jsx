@@ -240,7 +240,7 @@ const CompareSnkEbay = () => {
         return prevSelectedItems.filter((item) => item.image !== listing.image);
       } else {
         return [
-          { price: listing.price, image: listing.image },
+          { price: listing.price, image: listing.image, type: listing.evaluation },
           ...prevSelectedItems,
         ];
       }
@@ -265,7 +265,10 @@ const CompareSnkEbay = () => {
           {
             itemId: itemIdStr,
             price: listing.sellingStatus[0].currentPrice[0].__value__,
-            image: listing.viewItemURL,
+            image: listing.galleryURL.toString(),
+            type: listing.condition[0].conditionDisplayName,
+            name: listing.title
+            //add more information like buy it now vs auction 
           },
           ...prevSelectedItems,
         ];

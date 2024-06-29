@@ -9,6 +9,7 @@ import Home2 from '../pages/Home2/Home2';
 import Footer from '../components/Footer/Footer';
 import Tooltip from '../components/Tooltip/Tooltip';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
+import CompareListingsPage from '../pages/CompareListingsPage/CompareListingsPage';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Route path="/" element={<Home2 />} />
       <Route path="/results" element={<ResultsPage />} />
       <Route path="/compare" element={<CompareSnkEbay />} />
+      <Route path="/compare-listings" element={<CompareListingsPage />} />
       <Route path="/loader" element={<NinjaLoader />} />
       <Route path="/trigger" element={<Tooltip />} />
     </Routes>
