@@ -6,17 +6,28 @@
 
 
 .buttontooltip-trigger .buttontooltip {
+    @include body-mobile;
     min-width: fit-content;
-    background-color: black;
+    background-color: $cobalt;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px;
+    padding: 5px 10px;
     opacity: 0;
     transition: opacity 1s;
     position: absolute;
     z-index: 1;
-    white-space: nowrap;
+    white-space: normal;
+    width: 100px;
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        @include body-copy;
+        width: 200px;
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+        white-space: nowrap;
+    }
 }
 
 .buttontooltip-trigger:hover .buttontooltip {
@@ -24,60 +35,72 @@
 }
 
 .buttontooltip-trigger {
-position: relative;
-display: inline;
+    position: relative;
+    display: inline;
 }
 
 .buttontooltip-trigger img {
     width: 20px;
 }
 
-.buttontooltip-right{
+.buttontooltip-right {
     top: 5px;
     left: 105%;
 }
 
-.buttontooltip-left{
+.buttontooltip-left {
     top: 5px;
     right: 105%;
 }
-  
-.buttontooltip-top{
-    bottom:105%;
-    left:0%;
+
+.buttontooltip-top {
+    bottom: 105%;
+    left: 0%;
 }
 
-.buttontooltip-bottom{
-    top:105%;
-    left:-100%;
+.buttontooltip-bottom {
+    top: 105%;
+    left: -3%;
     margin-top: 10px;
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        top: 105%;
+        left: -55%;
+        margin-top: 10px;
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+        top: 105%;
+        left: -100%;
+        margin-top: 10px;
+    }
 }
 
 .buttontooltip-top::after {
     content: " ";
     position: absolute;
-    top: 100%; 
+    top: 100%;
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: black transparent transparent transparent;
+    border-color: $cobalt transparent transparent transparent;
 }
 
 
 .buttontooltip-bottom::after {
     content: " ";
     position: absolute;
-    bottom: 100%; 
+    bottom: 100%;
     left: 30%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent black transparent;
+    border-color: transparent transparent $cobalt transparent;
 }
 
 
-.buttontooltip-right::after{
+.buttontooltip-right::after {
     content: " ";
     position: absolute;
     top: 50%;
@@ -85,11 +108,11 @@ display: inline;
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent black transparent transparent;
+    border-color: transparent $cobalt transparent transparent;
 }
 
 
-.buttontooltip-left::after{
+.buttontooltip-left::after {
     content: " ";
     position: absolute;
     top: 50%;
@@ -97,5 +120,5 @@ display: inline;
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent  transparent transparent black;
+    border-color: transparent transparent transparent $cobalt;
 }

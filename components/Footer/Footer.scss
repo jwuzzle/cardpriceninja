@@ -5,15 +5,25 @@
 @use "../../styles/partials/typography" as *;
 
 .footer {
-    height: 100px;
+    height: 50px;
     background-color: $cobalt;
     display: flex;
     justify-content: center;
-    margin-top: 56px;
+    margin-top: 20px;
 
     &__copyright {
+        @include body-mobile;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        height: 100px;
+        margin-top: 56px;
+    
+        &__copyright {
+            @include body-copy;
+        }
     }
 }

@@ -6,7 +6,9 @@
 
 .results {
 
-    &__top {}
+    &__top {
+        margin: 0 16px;
+    }
 
     &__header {
         @include subheader-mobile;
@@ -15,7 +17,9 @@
         color: $cobalt;
     }
 
-    &__snkr-container {}
+    &__snkr-container {
+        margin: 0 16px;
+    }
 
     &__subheader {
         @include subheader-mobile;
@@ -67,6 +71,7 @@
         &__top {
             display: flex;
             flex-direction: column;
+            margin: 0 90px;
         }
 
         &__header {
@@ -113,10 +118,9 @@
 
         &__snkr-container {
             display: flex;
-            /* flex-direction: column; */
             align-items: center;
-            margin: 90px;
-            justify-content: space-evenly;
+            margin: 36px 90px;
+            justify-content: center;
         }
 
         &__subheader {

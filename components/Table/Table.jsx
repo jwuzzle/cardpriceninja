@@ -13,7 +13,7 @@ const Table = (props) => {
   console.log(ebayRowArray);
 
   return (
-    <div>
+    <div className="table-container">
       <table className="table">
         <tbody>
           {props.tableHeaders.map((head, index) => (

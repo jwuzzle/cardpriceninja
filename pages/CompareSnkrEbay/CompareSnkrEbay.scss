@@ -7,49 +7,88 @@
 .compare {
     display: flex;
     flex-direction: column;
-    align-content: space-between;
 
     &__header-top {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px;
+    }
+
+    &__text {
+        margin-bottom: 16px;
+
+        &--pageheader {
+            @include page-header-mobile;
+            margin-bottom: 8px;
+        }
+
+        &--subheader {
+            @include body-mobile;
+        }
+
     }
 
     &__button {
-        align-self: end;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1px solid $cobalt;
+        padding-bottom: 16px;
 
         &--compare {
+            @include button-label-mobile;
             border: 1px solid $cobalt;
-            width: 150px;
             border-radius: 5px;
-            background-color: $white;
+            background-color: $cobalt;
             cursor: pointer;
-            margin: 0 1px;
-            padding: 8px;
-            color: $cobalt;
+            padding: 8px 6px;
+            color: $white;
+            width: 100%;
         }
 
         &--submit {
+            @include button-label-mobile;
             border: 1px solid $cobalt;
             width: 150px;
             border-radius: 5px;
-            background-color: $white;
+            background-color: $cobalt;
             cursor: pointer;
             margin: 0 1px;
             padding: 8px;
-            color: $cobalt;
+            color: $white;
+            width: 100%;
         }
 
+        &--cancel {
+            @include button-label-mobile;
+            color: $cobalt;
+            background-color: $white;
+            border: none;
+            width: 100%;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        &--help {
+            @include body-mobile;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 16px;
+        }
     }
-
-
 
     &__section {
         display: flex;
         flex-direction: column;
+        margin: 0 16px 16px 16px;
+
     }
 
     &__subtitle {
         @include subheader-mobile;
-        margin: 24px 16px 0 16px;
     }
 
     &__section-listings {
@@ -57,7 +96,11 @@
         flex-direction: column;
     }
 
-    &__top {}
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
     &__filter {
         &--label {
@@ -66,57 +109,67 @@
 
         &--dropdown {
             margin-left: 8px;
-            @include button-label-mobile;
+                padding: 3px 6px;
+                @include button-label-mobile;
+                border: 1px solid $cobalt;
+                border-radius: 5px;
         }
     }
+
+    &__disclaimer {
+        @include small-text-mobile;
+        border-top: 1px solid $cobalt;
+        margin: 16px;
+        padding-top: 16px;
+        display: flex;
+        justify-content: center;
+    }
+
 
     @media only screen and (min-width: $tablet-breakpoint) {
 
         &__header-top {
-            display: flex;
-        }
-
-        &__compare-button {
-            align-self: end;
-            border: 1px solid $cobalt;
-            width: 20px;
-            border-radius: 2px;
-            background-color: $white;
-            cursor: pointer;
-            margin: 0 1px;
+            padding: 16px 36px;
         }
 
         &__text {
-            margin: 36px 40px 0 0;
+            margin-bottom: 24px;
 
             &--pageheader {
                 @include page-copy;
+                margin-bottom: 24px;
             }
 
             &--subheader {
                 @include body-copy;
-                margin-top: 24px;
+            }
+        }
+
+        &__button {
+            padding-bottom: 24px;
+
+            &--compare {
+                @include button-label;
+                width: 30%;
+            }
+
+            &--submit {
+                @include button-label;
+                width: 30%;
+            }
+
+            &--cancel {
+                @include button-label;
+                width: 30%;
+            }
+
+            &--help {
+                @include body-copy;
             }
         }
 
         &__section {
-            border: 1px solid $black;
-            margin-bottom: 24px;
-            margin-top: 24px;
-            border-radius: 5px;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px,
-                rgb(51, 51, 51) 0px 0px 0px 3px;
-        }
-
-        &__section-listings {
-            padding: 0 16px 16px 16px;
-        }
-
-        &__top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 36px 40px 24px 40px;
+            margin: 24px 36px; 
         }
 
         &__subtitle {
@@ -124,15 +177,24 @@
             margin: unset;
         }
 
+        &__section-listings {
+        }
+
+        &__top {
+            margin: 0 0 24px 0;
+        }
+
         &__filter {
             &--label {
-                @include small-text;
+                @include button-label;
+                font-weight: 400;
             }
 
             &--dropdown {
                 margin-left: 8px;
                 padding: 3px 6px;
-                @include small-text;
+                @include button-label;
+                font-weight: 400;
                 border: 1px solid $cobalt;
                 border-radius: 5px;
             }
@@ -140,14 +202,45 @@
 
         &__disclaimer {
             @include small-text;
-            margin-top: 36px;
-            display: flex;
-            justify-content: center;
+            margin: 0 36px;
         }
     }
 
     @media only screen and (min-width: $desktop-breakpoint) {
-        margin: 0 90px 36px 90px;
+
+        &__header-top {
+            padding: 36px 90px;
+            align-items: unset;
+        }
+
+        &__section {
+            margin: 24px 90px;
+        }
+
+        &__text {
+            margin-bottom: 36px;
+        }
+
+        &__button {
+            padding-bottom: 36px;
+
+            &--compare {
+                width: 20%;
+            }
+
+            &--submit {
+                width: 20%;
+            }
+
+            &--cancel {
+                width: 20%;
+            }
+        }
+
+        &__disclaimer {
+            @include small-text;
+            margin: 0 90px;
+        }
     }
 }
 
@@ -163,7 +256,7 @@
         flex-direction: column;
         align-items: center;
         height: 240px;
-        width: 50%;
+        width: 80%;
         padding: 16px;
         border-radius: 5px;
         box-shadow: rgba(0, 75, 173, 0.649) 0px 2px 8px 0px;
@@ -186,7 +279,7 @@
     }
 
     &__image {
-        width: 175px;
+        width: 80%;
         height: 200px;
         margin-bottom: 8px;
         border-radius: 5px;
@@ -213,7 +306,7 @@
         flex-direction: column;
         align-items: center;
         height: 240px;
-        width: 50%;
+        width: 80%;
         padding: 16px;
         border-radius: 5px;
         box-shadow: rgba(0, 75, 173, 0.649) 0px 2px 8px 0px;
@@ -227,7 +320,7 @@
     }
 
     &__image {
-        width: 120px;
+        width: 80%;
         height: 150px;
         margin-bottom: 8px;
         border-radius: 5px;
@@ -261,7 +354,10 @@
         }
     }
 
-    @media only screen and (min-width: $desktop-breakpoint) {}
+    @media only screen and (min-width: $desktop-breakpoint) {
+        &__individual {
+        }
+    }
 }
 
 .pagination {
@@ -307,14 +403,48 @@
     background-color: $lightgray;
 }
 
-.compare__button--compare:hover, .compare__button--submit:hover  {
+.compare__button--compare:hover,
+.compare__button--submit:hover {
     border: 1px solid $cobalt;
-            width: 150px;
-            border-radius: 5px;
-            background-color: $cobalt;
-            cursor: pointer;
-            margin: 0 1px;
-            padding: 8px;
-            color: $white;
-            font-size: 600;
+    width: 100%;
+    border-radius: 5px;
+    background-color: $white;
+    cursor: pointer;
+    margin: 0 1px;
+    padding: 8px;
+    color: $cobalt;
+    font-size: 600;
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        width: 30%;
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+        width: 20%;
+    }
+}
+
+.compare__button--cancel:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.card-expand {
+    @media only screen and (min-width: $tablet-breakpoint) {
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+        height: 260px;
+    }
+
+}
+
+.compare-box {
+    @media only screen and (min-width: $tablet-breakpoint) {
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+        margin-bottom: 8px; 
+    }
 }

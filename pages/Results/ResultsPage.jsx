@@ -18,6 +18,22 @@ const ResultsPage = () => {
   console.log(scrapedDataObjectParsed);
   console.log(scrapedDataObjectParsed.name);
 
+  const formatName = (name) => {
+  const indexOfFirstParenthesis = name.indexOf('(');
+    if (indexOfFirstParenthesis !== -1) {
+        const firstPart = name.slice(0, indexOfFirstParenthesis);
+        const secondPart = name.slice(indexOfFirstParenthesis);
+        return (
+            <>
+                {firstPart}
+                <br />
+                {secondPart}
+            </>
+        );
+    }
+    return name;
+  }
+
   const regex = /\[.*\)$/;
   const card_name =
     "japanese " + scrapedDataObjectParsed.name.replace(regex, "");
@@ -103,16 +119,17 @@ const ResultsPage = () => {
     <>
     {isLoading === true ? <NinjaLoader className="no-scroll" /> : ""}
     <div className="results">
-      <div className="results__top">
+      <div className="results__top"> 
+      <ConfirmCard onClickYes={onClick} onClickNo={onClickHome} />
       </div>
       <div className="results__snkr-container">
-        <SnkrDunkResults
-          name={scrapedDataObjectParsed.name}
+       <SnkrDunkResults
+          name={formatName(scrapedDataObjectParsed.name)}
           image={scrapedDataObjectParsed.thumbnailUrl}
           price={scrapedDataObjectParsed.usedMinPrice}
           listings={scrapedDataObjectParsed.usedListingCount}
         />
-        <ConfirmCard onClickYes={onClick} onClickNo={onClickHome} />
+        
       </div>
     </div>
     </>
