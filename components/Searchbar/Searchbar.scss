@@ -28,6 +28,7 @@
         &__top {
             width: 100%;
             flex-direction: row;
+            gap: 5%;
             
         }
     }
@@ -43,12 +44,6 @@
     box-shadow: 0 0 0 1px rgba(0,0,0, 0.05);
     @include body-mobile;
     color: $black;
-
-
-
-    &__helper {
-        @include small-text-mobile;
-    }
 
     &__button {
         background-color: $cobalt;
@@ -75,20 +70,24 @@
     @include body-copy;
     color: $black;
 
-    &__helper {
-        font-size: 10px;
-    }
-
 
     &__button {
         @include button-label;
         width: fit-content;
         margin-left: 8px;
+        height: 75%;
+        padding: 0.75rem;
       
     }
 
 }
         
+}
+
+.search-bar-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .search-bar__button:hover {
