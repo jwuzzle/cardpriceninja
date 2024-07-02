@@ -79,9 +79,15 @@ const CompareSnkEbay = () => {
   const [minpageNumberLimit, setMinpageNumberLimit] = useState(0);
 
   const updateItemsPerPage = () => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 400) {
+      setSnkrItemsPerPage(1);
+      setEbayItemsPerPage(1);
+    } else if (window.innerWidth < 650) {
       setSnkrItemsPerPage(2);
       setEbayItemsPerPage(2);
+    } else if (window.innerWidth < 830) {
+      setSnkrItemsPerPage(3);
+      setEbayItemsPerPage(3);
     } else if (window.innerWidth < 1280) {
       setSnkrItemsPerPage(4);
       setEbayItemsPerPage(4);
@@ -344,9 +350,8 @@ const CompareSnkEbay = () => {
             ungraded cards, we've got you covered.
           </p>
         </div>
-        <div className="compare__button">
           {!compareButton ? (
-            <div>
+            <div className="compare__button">
             <button
               className="compare__button--compare"
               onClick={() => {
@@ -354,22 +359,12 @@ const CompareSnkEbay = () => {
                 setSubmitCompare(!submitCompare);
               }}
             >
-              Compare Listings
-            </button>
-            <p>Select up to 4 listings</p></div>
+              Select Listings to Compare
+            </button></div>
           ) : undefined}
           {submitCompare ? (
-            <div>
+            <div className="compare__button">
               <button
-              className="compare__button--submit"
-              onClick={() => {
-                setCompareButton(!compareButton);
-                setSubmitCompare(!submitCompare);
-              }}
-            >
-              Cancel
-            </button>
-            <button
               className="compare__button--submit"
               onClick={() => {
                 compareSubmit();
@@ -378,9 +373,18 @@ const CompareSnkEbay = () => {
             >
               Submit
             </button>
-            <p>Select up to 4 listings</p></div>
+            <button
+              className="compare__button--cancel"
+              onClick={() => {
+                setCompareButton(!compareButton);
+                setSubmitCompare(!submitCompare);
+              }}
+            >
+              Cancel
+            </button>
+           
+            <p className="compare__button--help">Select up to 5 listings below</p></div>
           ) : undefined}
-        </div>
       </div>
       <div className="compare__section">
         <div className="compare__top">
@@ -405,7 +409,7 @@ const CompareSnkEbay = () => {
             {currentItems.map((listing, index) => (
               <div
                 key={index}
-                className="snkr-listings__individual"
+                className={compareButton === false ? "snkr-listings__individual" : "snkr-listings__individual card-expand"}
                 onChange={() => {
                   clickSnkrDunkListing(listing);
                 }}
@@ -486,7 +490,7 @@ const CompareSnkEbay = () => {
             {currentEbayItems.map((listing, index) => (
               <div
                 key={index}
-                className="ebay-listings__individual"
+                className={compareButton === false ? "ebay-listings__individual" : "ebay-listings__individual card-expand"}
                 onClick={() => {
                   goToEbayListing(listing.viewItemURL);
                 }}

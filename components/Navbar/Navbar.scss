@@ -53,6 +53,46 @@
         display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 12px 36px;
+    border-bottom: 2px solid $cobalt;
+
+    &__link {
+        text-decoration: none;
+        color: $black;
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        width: 50px;
+        height: 35px;
+    }
+
+    &__logo-text {
+        padding-left: 0;
+        font-size: 24px;
+    }
+
+    &__menu {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        width: 30%;
+        justify-content: flex-end;
+    }
+
+    &__menu-object {
+        width: 24px;
+        height: 24px;
+
+    }
+
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+        display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 12px 90px;
     border-bottom: 2px solid $cobalt;
 
