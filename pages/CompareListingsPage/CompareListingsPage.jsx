@@ -1,5 +1,7 @@
 import React from "react";
 import "./CompareListingsPage.scss";
+import Table from "../../components/Table/Table";
+import TableRows from "../../components/Table/TableRows";
 
 const CompareListingsPage = () => {
   const selectedSnkrListingsToCompareFromStorage = sessionStorage.getItem(
@@ -22,24 +24,24 @@ const CompareListingsPage = () => {
   console.log(selectedEbayListings[0].image);
 
   const tableHeaders = [
-    "Site", "Picture", "Price", "Type of Card"
-  ]
+    "Site",
+    "Picture",
+    "Type of Card",
+    "Price",
+    "Link to Posting",
+  ];
 
   return (
-<div>
-<table style={{ width: 500 }}>
-<thread>
-    <tr className="table_headers">
-        {tableHeaders.map((head, index) => (
-            <th key={index}>{head}</th>
-        ))}
-    </tr>
-</thread>
-
-</table>
-
-</div>
-
+    <div className="compare-listing-page">
+      <div className="compare-listing-page__header">
+        <h1>Compare selected items</h1>
+      </div>
+      <Table
+        tableHeaders={tableHeaders}
+        tableSnkrData={selectedSnkrListings}
+        tableEbayData={selectedEbayListings}
+      />
+    </div>
 
     /* <div className="compare-page">
       <div className="compare-page__back">

@@ -230,6 +230,21 @@ const CompareSnkEbay = () => {
     }
   };
 
+  const snkrdunkEvaluationConvert = (value) => {
+    if (value === "A" || value === "B" || value === "C" || value === "D") {
+      return "Ungraded";
+    } else if (value.includes("PSA")) {
+      return "Graded";
+    }
+  };
+
+  const removeUSFromSNKRPrice = (value) => {
+    if (value.startsWith("US ")) {
+      return value.substring(3);
+    }
+    return value;
+  };
+
   const toggleItem = (listing) => {
     setCompareArray((prevSelectedItems) => {
       const isItemInArray = prevSelectedItems.some(
@@ -240,7 +255,12 @@ const CompareSnkEbay = () => {
         return prevSelectedItems.filter((item) => item.image !== listing.image);
       } else {
         return [
-          { price: listing.price, image: listing.image, type: listing.evaluation },
+          {
+            price: removeUSFromSNKRPrice(listing.price),
+            image: listing.image,
+            type: snkrdunkEvaluationConvert(listing.evaluation),
+            url: listing.snkrurl,
+          },
           ...prevSelectedItems,
         ];
       }
@@ -267,8 +287,9 @@ const CompareSnkEbay = () => {
             price: listing.sellingStatus[0].currentPrice[0].__value__,
             image: listing.galleryURL.toString(),
             type: listing.condition[0].conditionDisplayName,
-            name: listing.title
-            //add more information like buy it now vs auction 
+            name: listing.title,
+            url: listing.viewItemURL,
+            //add more information like buy it now vs auction
           },
           ...prevSelectedItems,
         ];
@@ -309,24 +330,25 @@ const CompareSnkEbay = () => {
       stringifiedEbayCompareListings
     );
 
-    navigate('/compare-listings');
+    navigate("/compare-listings");
   };
 
   return (
     <div className="compare">
       <div className="compare__header-top">
-      <div className="compare__text">
-        <h1 className="compare__text--pageheader">Card Listings</h1>
-        <p className="compare__text--subheader">
-          You can easily view and compare listings for your favorite cards from
-          both SNKRDunk and eBay. Whether you're looking for graded or ungraded
-          cards, we've got you covered.
-        </p>
-      </div>
-      <div className="compare__button">
+        <div className="compare__text">
+          <h1 className="compare__text--pageheader">Card Listings</h1>
+          <p className="compare__text--subheader">
+            You can easily view and compare listings for your favorite cards
+            from both SNKRDunk and eBay. Whether you're looking for graded or
+            ungraded cards, we've got you covered.
+          </p>
+        </div>
+        <div className="compare__button">
           {!compareButton ? (
+            <div>
             <button
-            className="compare__button--compare"
+              className="compare__button--compare"
               onClick={() => {
                 setCompareButton(!compareButton);
                 setSubmitCompare(!submitCompare);
@@ -334,10 +356,21 @@ const CompareSnkEbay = () => {
             >
               Compare Listings
             </button>
+            <p>Select up to 4 listings</p></div>
           ) : undefined}
           {submitCompare ? (
+            <div>
+              <button
+              className="compare__button--submit"
+              onClick={() => {
+                setCompareButton(!compareButton);
+                setSubmitCompare(!submitCompare);
+              }}
+            >
+              Cancel
+            </button>
             <button
-            className="compare__button--submit"
+              className="compare__button--submit"
               onClick={() => {
                 compareSubmit();
                 setCompareButton(!compareButton);
@@ -345,9 +378,10 @@ const CompareSnkEbay = () => {
             >
               Submit
             </button>
+            <p>Select up to 4 listings</p></div>
           ) : undefined}
-          </div>
-          </div>
+        </div>
+      </div>
       <div className="compare__section">
         <div className="compare__top">
           <h1 className="compare__subtitle">SNKRDUNK Listings</h1>

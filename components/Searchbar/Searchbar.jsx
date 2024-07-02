@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Results from "../SnkrDunkResults/SnkrDunkResults";
+import Tooltip from "../../components/Tooltip/ToolTip";
 
 const baseURL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -64,13 +65,18 @@ const Searchbar = (props) => {
     <>
       <form className="search" onSubmit={handleSubmit}>
         <div className="search__top">
+          <div className="search-bar-container">
         <input
           type="text"
           value={searchPrompt}
           onChange={(e) => setSearchPrompt(e.target.value)}
-          placeholder="Enter SNKRDUNK product link"
+          placeholder="Enter SNKRDUNK product link "
           className="search-bar"
         />
+        <Tooltip
+          text="Example: https://snkrdunk.com/en/trading-cards/93379" 
+          position="bottom"
+        /></div>
         <button
           type="submit"
           className="search-bar__button"
@@ -79,8 +85,6 @@ const Searchbar = (props) => {
           {isLoading ? "Searching..." : "Search"}
         </button>
         </div>
-        <p className={`search-bar__helper ${props.helper}`}>Example: https://snkrdunk.com/en/trading-cards/93379</p>
-        
       </form>
     </>
   );

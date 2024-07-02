@@ -62,6 +62,7 @@
     }
 
     @media only screen and (min-width: $tablet-breakpoint) {
+        height: 100vh;
 
         &__top {
             display: flex;
@@ -112,9 +113,10 @@
 
         &__snkr-container {
             display: flex;
-            flex-direction: column;
+            /* flex-direction: column; */
             align-items: center;
-            margin-top: 42px;
+            margin: 90px;
+            justify-content: space-evenly;
         }
 
         &__subheader {
