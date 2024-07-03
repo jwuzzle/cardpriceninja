@@ -2,6 +2,7 @@ import React from "react";
 import "./CompareListingsPage.scss";
 import Table from "../../components/Table/Table";
 import { useNavigate } from "react-router-dom";
+import leftarrow from "../../src/assets/icons/arrow-left-solid.svg";
 
 const CompareListingsPage = () => {
   const selectedSnkrListingsToCompareFromStorage = sessionStorage.getItem(
@@ -38,8 +39,9 @@ const CompareListingsPage = () => {
 
   return (
     <div className="compare-listing-page">
-      <div>
-        <button className="back-button" onClick={handleBackClick}>Go Back to Listings</button>
+      <div className="back-button">
+        <img src={leftarrow} className="back-button__arrow" />
+        <button className="back-button__text" onClick={handleBackClick}>Go Back to Listings</button>
       </div>
       <div>
         <h1 className="compare-listing-page__header">Compare selected items</h1>

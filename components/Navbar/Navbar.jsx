@@ -22,25 +22,36 @@ const openSearch = () => {
     setOpenSearchBar(!openSearchBar)
 }
 
-console.log(openSearchBar)
 
+
+/* const navbar = document.getElementById("navbar")
+
+const sticky = navbar.offsetTop;
+
+const addStickyClass = () => {
+    if (window.scrollY >= sticky) {
+        navbar.className.add("sticky")
+    } else {
+        navbar.className.remove("sticky");
+    }
+}
+
+window.onscroll = function() {addStickyClass()}; */
 
   return (
     <header className="header">
-        <nav className="nav">
+        <nav className="nav" id="navbar">
     <Link to="/" className="nav__link">
         <img className="nav__logo" src={logo} alt="logo" />
         <img className="nav__logo-text" src={logotext} alt="cardpriceninja" />
-{/*         <p className="nav__logo-text">Card<span className="text-primary">Price</span><span>Ninja</span></p> */}
     </Link>
     <div className="nav__menu">
     {openSearchBar === true ? (
         <Searchbar 
-        helper="helper-off"
+        helper="off"
         openSearchBar={() => openSearch()} />
     ) : (null)}
     <img onClick={openSearch} className="nav__menu-object" src={search} />
-
     {/* {navIcons.map((icon, index) => (
         <img className="nav__menu-object" key={index} src={icon.src} alt={icon.alt}/>
     ))} */}

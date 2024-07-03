@@ -73,10 +73,12 @@ const Searchbar = (props) => {
           placeholder="Enter SNKRDUNK product link "
           className="search-bar"
         />
-        <Tooltip
-          text="Example: https://snkrdunk.com/en/trading-cards/93379" 
+        {props.helper === "on" ? 
+        (<Tooltip
+          text="Go to snkrdunk.com and search for your card. Once you locate the card product page, copy the url from the browser. Example: https://snkrdunk.com/en/trading-cards/93379" 
           position="bottom"
-        /></div>
+        />) : undefined}
+        </div>
         <button
           type="submit"
           className="search-bar__button"
