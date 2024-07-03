@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 import logo from "../../src/assets/logo/CardPriceNinjaLogo.svg";
+import logotext from "../../src/assets/logo/CardPriceNinjaLogoText.svg";
 import search from "../../src/assets/icons/magnifying-glass-solid.svg";
 import { useState } from "react";
 import Searchbar from "../Searchbar/Searchbar";
@@ -29,7 +30,8 @@ console.log(openSearchBar)
         <nav className="nav">
     <Link to="/" className="nav__link">
         <img className="nav__logo" src={logo} alt="logo" />
-        <p className="nav__logo-text">Card<span className="text-primary">Price</span><span>Ninja</span></p>
+        <img className="nav__logo-text" src={logotext} alt="cardpriceninja" />
+{/*         <p className="nav__logo-text">Card<span className="text-primary">Price</span><span>Ninja</span></p> */}
     </Link>
     <div className="nav__menu">
     {openSearchBar === true ? (
