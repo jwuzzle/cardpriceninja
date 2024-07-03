@@ -31,3 +31,45 @@
         }
     }
 }
+
+
+.back-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+
+    &__arrow {
+        width: 12px;
+        margin-right: 5px;
+
+    }
+
+    &__text {
+        @include button-label-mobile;
+        background-color: $white;
+    border: none;
+    cursor: pointer;
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        &__arrow {
+
+        }
+    
+        &__text {
+            @include button-label;
+            font-weight: 400;
+        }
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+        &__arrow {
+
+        }
+    
+        &__text {
+    
+        }
+    }
+}

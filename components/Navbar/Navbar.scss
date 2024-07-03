@@ -19,12 +19,14 @@
     padding: 12px 16px;
     border-bottom: 2px solid $cobalt;
     height: 50px;
+    background-color: $white;
 
     &__link {
         text-decoration: none;
         color: $black;
         display: flex;
         align-items: center;
+        height: 50px;
     }
 
     &__logo {
@@ -142,3 +144,14 @@
 .text-primary {
     color: $black;
 }
+
+
+.sticky {
+    position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+    padding-top: 60px;
+  }

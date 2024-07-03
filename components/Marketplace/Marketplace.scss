@@ -1,0 +1,130 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+
+.homepage-compare-listings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    &__header {
+        padding: 24px 0 16px 0;
+        color: $black;
+        border-top: 5px solid $cobalt;
+        width: 50%;
+        text-align: center;
+        @include home-header-mobile;
+    }
+
+    &__description--top {
+        padding: 0 16px;
+        text-align: center;
+        color: $black;
+        @include body-mobile;
+    }
+
+    &__description--bottom {
+        padding: 0 0 16px 0;
+        text-align: center;
+        color: $white;
+        border-bottom: 5px solid $cobalt;
+        width: 50%;
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+
+        &__header {
+            padding: 60px 0 36px 0;
+            @include home-header;
+        }
+
+        &__description--top {
+            padding: 0 90px;
+            @include body-copy;
+        }
+
+        &__description--bottom {
+            padding: 0 0 60px 0;
+            text-align: center;
+            color: $white;
+            border-bottom: 5px solid $cobalt;
+            width: 50%;
+        }
+        
+    }
+}
+
+
+.logo-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 0 0 0;
+    width: 100%;
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+    margin: 36px 0 0 0;
+    }
+}
+
+.logo {
+
+    max-width: 100px;
+    margin: 0 10px;
+    cursor: pointer;
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        max-width: 150px;
+        margin: 0 20px;
+    }
+}
+
+/* @media only screen and (min-width: $tablet-breakpoint) {
+    .logo {
+        max-width: 100px;
+        margin: 0 10px;
+    }
+} */
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.carousel-container {
+    display: inline-block;
+    animation: scroll 20s linear infinite;
+}
+
+.carousel-group {
+    display: flex;
+}
+
+.carousel-item {
+    width: 150px; /* Adjust to your logo size */
+    display: inline-block;
+    margin: 0 10px; /* Space between logos */
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+.second-top {
+    display: inline-block;
+    white-space: normal;
+    line-height: 1.5rem;
+}
