@@ -12,9 +12,12 @@
     justify-content: center;
     align-items: center;
     margin: 24px 16px;
-    background-color: $white; /* Or $white if using SCSS */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), /* Light shadow */
-                0 6px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
+    background-color: $white;
+    /* Or $white if using SCSS */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+        /* Light shadow */
+        0 6px 20px rgba(0, 0, 0, 0.1);
+    /* Deeper shadow for depth */
     background-color: $white;
     height: auto;
     padding: 16px;
@@ -114,16 +117,23 @@
     justify-content: center;
     list-style: none;
     gap: 5%;
+    margin: 0 16px;
+    align-items: center;
 
 
     &__main {
         position: relative;
         margin-bottom: 10px;
-        padding-left: 50px;
-        height: 20%;
+        padding: 16px 16px 16px 50px;
+        height: 80px;
         width: 80%;
         @include subheader-mobile;
         font-weight: 600;
+        border: 1px solid $black;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+            0 6px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        color: $cobalt;
     }
 
     &__description {
@@ -132,16 +142,23 @@
         font-style: italic;
         @include body-mobile;
         font-weight: 400;
+        color: $black;
     }
 
     @media only screen and (min-width: $tablet-breakpoint) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5%;
+        list-style: none;
+        margin: 0 16px;
+
         &__main {
             position: relative;
             margin-bottom: 10px;
-            padding-left: 50px;
-            height: 20%;
+            padding: 16px 16px 16px 50px;
+            height: 70%;
             width: 80%;
-            @include subheader;
+            @include body-copy;
             font-weight: 600;
         }
 
@@ -164,11 +181,59 @@
 .feature-list li::before {
     content: "";
     position: absolute;
-    left: 0;
-    top: -15%;
+    left: 5%;
+    top: 4%;
     width: 40px;
     height: 40px;
     background-image: url('../../src/assets/icons/home_bullet.svg');
     background-size: cover;
     background-repeat: no-repeat;
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        left: 1%;
+        top: 7%;
+    }
+}
+
+.feature-list__main:hover {
+    transform: scale(1.05);
+    background: $lightgray;
+}
+
+
+
+.fly-in-leftside {
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: fly-in-left 1.5s ease-in-out forwards;
+}
+
+.fly-in-rightside {
+    opacity: 0;
+    transform: translateX(100%);
+    animation: fly-in-right 1.5s ease-in-out forwards;
+}
+
+@keyframes fly-in-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fly-in-right {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

@@ -6,60 +6,38 @@ import search from "../../src/assets/icons/magnifying-glass-solid.svg";
 import { useState } from "react";
 import Searchbar from "../Searchbar/Searchbar";
 
-
-
-const navIcons = [
+/* const navIcons = [
     {src: "../../src/assets/icons/magnifying-glass-solid.svg", alt: "search"},
     {src: "../../src/assets/icons/heart-regular.svg", alt: "heart"},
     {src: "../../src/assets/icons/user-regular.svg", alt: "user"}
-]
+] */
 
 const Navbar = () => {
+  const [openSearchBar, setOpenSearchBar] = useState(false);
 
-const [openSearchBar, setOpenSearchBar] = useState(false)
-
-const openSearch = () => {
-    setOpenSearchBar(!openSearchBar)
-}
-
-
-
-/* const navbar = document.getElementById("navbar")
-
-const sticky = navbar.offsetTop;
-
-const addStickyClass = () => {
-    if (window.scrollY >= sticky) {
-        navbar.className.add("sticky")
-    } else {
-        navbar.className.remove("sticky");
-    }
-}
-
-window.onscroll = function() {addStickyClass()}; */
+  const openSearch = () => {
+    setOpenSearchBar(!openSearchBar);
+  };
 
   return (
     <header className="header">
-        <nav className="nav" id="navbar">
-    <Link to="/" className="nav__link">
-        <img className="nav__logo" src={logo} alt="logo" />
-        <img className="nav__logo-text" src={logotext} alt="cardpriceninja" />
-    </Link>
-    <div className="nav__menu">
-    {openSearchBar === true ? (
-        <Searchbar 
-        helper="off"
-        openSearchBar={() => openSearch()} />
-    ) : (null)}
-    <img onClick={openSearch} className="nav__menu-object" src={search} />
-    {/* {navIcons.map((icon, index) => (
+      <nav className="nav" id="navbar">
+        <Link to="/" className="nav__link">
+          <img className="nav__logo" src={logo} alt="logo" />
+          <img className="nav__logo-text" src={logotext} alt="cardpriceninja" />
+        </Link>
+        <div className="nav__menu">
+          {openSearchBar === true ? (
+            <Searchbar helper="off" openSearchBar={() => openSearch()} />
+          ) : null}
+          <img onClick={openSearch} className="nav__menu-object" src={search} />
+          {/* {navIcons.map((icon, index) => (
         <img className="nav__menu-object" key={index} src={icon.src} alt={icon.alt}/>
     ))} */}
-    </div>
-        </nav>
-
+        </div>
+      </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

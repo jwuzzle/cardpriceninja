@@ -1,0 +1,74 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+
+.ninja-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+
+    &__image {
+
+        width: 50%;
+        @media only screen and (min-width: $tablet-breakpoint) {
+
+        width: 20%;
+        }
+    }
+
+    &__text {
+
+    
+            margin-top: 16px;
+            @include page-header-mobile;
+            
+
+        @media only screen and (min-width: $tablet-breakpoint) {
+        margin-top: 24px;
+        @include page-copy;
+        }
+    }
+
+    &__description {
+        margin-top: 16px;
+            @include body-mobile;
+            
+
+        @media only screen and (min-width: $tablet-breakpoint) {
+        margin-top: 24px;
+        @include body-copy;
+        }
+    
+    }
+
+    &__button-container {
+
+   margin-top: 16px;
+        @media only screen and (min-width: $tablet-breakpoint) {
+            margin-top: 24px;
+       
+            }
+
+    }
+
+    &__button {padding: 8px;
+        border-radius: 5px;
+        border: 1px solid $cobalt;
+        color: $white;
+        background-color: $cobalt;
+        @include button-label-mobile;
+
+        @media only screen and (min-width: $tablet-breakpoint) {
+          
+        @include button-label;
+       
+            }
+        
+    }
+}

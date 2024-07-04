@@ -69,14 +69,17 @@
     box-shadow: 0 0 0 1px rgba(0,0,0, 0.05);
     @include body-copy;
     color: $black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 
     &__button {
         @include button-label;
         width: fit-content;
         margin-left: 16px;
-        height: 75%;
-        padding: 0.75rem;
+        height: 100%;
+        padding: .9rem;
       
     }
 

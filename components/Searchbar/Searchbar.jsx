@@ -2,8 +2,7 @@ import "./Searchbar.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Results from "../SnkrDunkResults/SnkrDunkResults";
-import Tooltip from "../../components/Tooltip/ToolTip";
+import Tooltip from "../../components/Tooltip/Tooltip"
 
 const baseURL = import.meta.env.VITE_APP_BASE_URL;
 

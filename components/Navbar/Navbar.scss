@@ -9,6 +9,10 @@
     width: 100%;
     overflow-x: hidden;
     box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    background-color: $white;
+    z-index: 1000;
 }
 
 
@@ -54,87 +58,87 @@
 
     @media only screen and (min-width: $tablet-breakpoint) {
         display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 36px;
-    border-bottom: 2px solid $cobalt;
-    height: 50px;
-
-    &__link {
-        text-decoration: none;
-        color: $black;
-        display: flex;
+        justify-content: space-between;
         align-items: center;
-    }
+        padding: 12px 36px;
+        border-bottom: 2px solid $cobalt;
+        height: 50px;
 
-    &__logo {
-        width: 50px;
-        height: 35px;
-    }
+        &__link {
+            text-decoration: none;
+            color: $black;
+            display: flex;
+            align-items: center;
+        }
 
-    &__logo-text {
-        padding-left: 0;
-        width: 200px;
-        height: 400px;
-        overflow: hidden;
-    }
+        &__logo {
+            width: 50px;
+            height: 35px;
+        }
 
-    &__menu {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        width: 30%;
-        justify-content: flex-end;
-    }
+        &__logo-text {
+            padding-left: 0;
+            width: 200px;
+            height: 400px;
+            overflow: hidden;
+        }
 
-    &__menu-object {
-        width: 24px;
-        height: 24px;
+        &__menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            width: 30%;
+            justify-content: flex-end;
+        }
 
-    }
+        &__menu-object {
+            width: 24px;
+            height: 24px;
+
+        }
 
     }
 
     @media only screen and (min-width: $desktop-breakpoint) {
         display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 90px;
-    border-bottom: 2px solid $cobalt;
-    height: 50px;
-
-    &__link {
-        text-decoration: none;
-        color: $black;
-        display: flex;
+        justify-content: space-between;
         align-items: center;
-    }
+        padding: 12px 90px;
+        border-bottom: 2px solid $cobalt;
+        height: 50px;
 
-    &__logo {
-        width: 50px;
-        height: 35px;
-    }
+        &__link {
+            text-decoration: none;
+            color: $black;
+            display: flex;
+            align-items: center;
+        }
 
-    &__logo-text {
-        padding-left: 0;
-        width: 200px;
-        height: 400px;
-        overflow: hidden;
-    }
+        &__logo {
+            width: 50px;
+            height: 35px;
+        }
 
-    &__menu {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        width: 30%;
-        justify-content: flex-end;
-    }
+        &__logo-text {
+            padding-left: 0;
+            width: 200px;
+            height: 400px;
+            overflow: hidden;
+        }
 
-    &__menu-object {
-        width: 24px;
-        height: 24px;
+        &__menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            width: 30%;
+            justify-content: flex-end;
+        }
 
-    }
+        &__menu-object {
+            width: 24px;
+            height: 24px;
+
+        }
 
     }
 
@@ -148,10 +152,10 @@
 
 .sticky {
     position: fixed;
-  top: 0;
-  width: 100%;
+    top: 0;
+    width: 100%;
 }
 
-.sticky + .content {
+.sticky+.content {
     padding-top: 60px;
-  }
+}
