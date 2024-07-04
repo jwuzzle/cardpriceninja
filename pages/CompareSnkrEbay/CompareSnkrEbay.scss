@@ -1,0 +1,454 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.compare {
+    display: flex;
+    flex-direction: column;
+
+    &__header-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px;
+    }
+
+    &__text {
+        margin-bottom: 16px;
+
+        &--pageheader {
+            @include page-header-mobile;
+            margin-bottom: 8px;
+        }
+
+        &--subheader {
+            @include body-mobile;
+        }
+
+    }
+
+    &__button {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1px solid $cobalt;
+        padding-bottom: 16px;
+
+        &--compare {
+            @include button-label-mobile;
+            border: 1px solid $cobalt;
+            border-radius: 5px;
+            background-color: $cobalt;
+            cursor: pointer;
+            padding: 8px 6px;
+            color: $white;
+            width: 100%;
+        }
+
+        &--submit {
+            @include button-label-mobile;
+            border: 1px solid $cobalt;
+            width: 150px;
+            border-radius: 5px;
+            background-color: $cobalt;
+            cursor: pointer;
+            margin: 0 1px;
+            padding: 8px;
+            color: $white;
+            width: 100%;
+        }
+
+        &--cancel {
+            @include button-label-mobile;
+            color: $cobalt;
+        background-color: #F5F5F5; 
+            border: none;
+            width: 100%;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        &--help {
+            @include body-mobile;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 16px;
+            color: $cobalt;
+        }
+    }
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+        margin: 0 16px 16px 16px;
+
+    }
+
+    &__subtitle {
+        @include subheader-mobile;
+    }
+
+    &__section-listings {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__filter {
+        &--label {
+            @include button-label-mobile;
+        }
+
+        &--dropdown {
+            margin-left: 8px;
+                padding: 3px 6px;
+                @include button-label-mobile;
+                border: 1px solid $cobalt;
+                border-radius: 5px;
+        }
+    }
+
+    &__disclaimer {
+        @include small-text-mobile;
+        border-top: 1px solid $cobalt;
+        margin: 16px;
+        padding-top: 16px;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+
+        &__header-top {
+            padding: 16px 36px;
+        }
+
+        &__text {
+            margin-bottom: 24px;
+
+            &--pageheader {
+                @include page-copy;
+                margin-bottom: 24px;
+            }
+
+            &--subheader {
+                @include body-copy;
+            }
+        }
+
+        &__button {
+            padding-bottom: 24px;
+
+            &--compare {
+                @include button-label;
+                width: 30%;
+            }
+
+            &--submit {
+                @include button-label;
+                width: 30%;
+            }
+
+            &--cancel {
+                @include button-label;
+                width: 30%;
+                margin-top: 8px;
+            }
+
+            &--help {
+                @include body-copy;
+            }
+        }
+
+        &__section {
+            margin: 24px 36px; 
+        }
+
+        &__subtitle {
+            @include subheader;
+            margin: unset;
+        }
+
+        &__section-listings {
+        }
+
+        &__top {
+            margin: 0 0 24px 0;
+        }
+
+        &__filter {
+            &--label {
+                @include button-label;
+                font-weight: 400;
+            }
+
+            &--dropdown {
+                margin-left: 8px;
+                padding: 3px 6px;
+                @include button-label;
+                font-weight: 400;
+                border: 1px solid $cobalt;
+                border-radius: 5px;
+            }
+        }
+
+        &__disclaimer {
+            @include small-text;
+            margin: 0 36px;
+        }
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+
+        &__header-top {
+            padding: 36px 90px;
+            align-items: unset;
+        }
+
+        &__section {
+            margin: 24px 90px;
+        }
+
+        &__text {
+            margin-bottom: 36px;
+        }
+
+        &__button {
+            padding-bottom: 36px;
+
+            &--compare {
+                width: 20%;
+            }
+
+            &--submit {
+                width: 20%;
+            }
+
+            &--cancel {
+                width: 20%;
+            }
+        }
+
+        &__disclaimer {
+            @include small-text;
+            margin: 0 90px;
+        }
+    }
+}
+
+
+.snkr-listings {
+    display: flex;
+    margin: 16px;
+    justify-content: center;
+    gap: 5%;
+
+    &__individual {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 240px;
+        width: 80%;
+        padding: 16px;
+        border-radius: 5px;
+        box-shadow: rgba(0, 75, 173, 0.649) 0px 2px 8px 0px;
+        cursor: pointer;
+        background-color: $white;
+    }
+
+    &__price {
+        @include button-label-mobile;
+    }
+
+    &__evaluation {
+        @include button-label-mobile;
+        margin-top: 3px;
+
+        &--style {
+            background-color: $black;
+            color: $white;
+            padding: 2px 4px;
+        }
+    }
+
+    &__image {
+        width: 80%;
+        height: 200px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        gap: 2%;
+        justify-content: unset;
+
+        &__individual {
+            width: 200px;
+        }
+    }
+}
+
+.ebay-listings {
+    display: flex;
+    margin: 16px;
+    justify-content: center;
+    gap: 5%;
+
+    &__individual {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 240px;
+        width: 80%;
+        padding: 16px;
+        border-radius: 5px;
+        box-shadow: rgba(0, 75, 173, 0.649) 0px 2px 8px 0px;
+        background-color: $white;
+    }
+
+    &__title {
+        @include button-label-mobile;
+        font-size: 10px;
+        margin-bottom: 8px;
+        height: 40px;
+    }
+
+    &__image {
+        width: 80%;
+        height: 150px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+    }
+
+    &__label {
+        @include button-label-mobile;
+
+        &--type {
+            margin-bottom: 3px;
+            @include button-label-mobile;
+        }
+    }
+
+    &__data {
+        @include button-label-mobile;
+
+        &--type {
+            background-color: $black;
+            color: $white;
+            padding: 2px 4px;
+        }
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        gap: 2%;
+        justify-content: unset;
+
+        &__individual {
+            width: 200px;
+        }
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+        &__individual {
+        }
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+
+    &__pageNumbers {
+        display: flex;
+        list-style: none;
+    }
+
+    &__button {
+        border: 1px solid $cobalt;
+        width: 20px;
+        border-radius: 2px;
+        background-color: $white;
+        cursor: pointer;
+        margin: 0 1px;
+    }
+
+    &__controls {
+        border: 1px solid $cobalt;
+        width: 40px;
+        border-radius: 2px;
+        background-color: $white;
+        margin: 0 5px;
+        padding: 1px;
+        cursor: pointer;
+    }
+}
+
+.pagination__button[disabled] {
+    background-color: $cobalt;
+    color: white;
+}
+
+.pagination__button:hover {
+    cursor: pointer;
+}
+
+.snkr-listings__individual:hover {
+    background-color: $lightgray;
+}
+
+.compare__button--compare:hover,
+.compare__button--submit:hover {
+    border: 1px solid $cobalt;
+    width: 100%;
+    border-radius: 5px;
+    background-color: $white;
+    cursor: pointer;
+    margin: 0 1px;
+    padding: 8px;
+    color: $cobalt;
+    font-size: 600;
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        width: 30%;
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+        width: 20%;
+    }
+}
+
+.compare__button--cancel:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.card-expand {
+    @media only screen and (min-width: $tablet-breakpoint) {
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+        height: 260px;
+    }
+
+}
+
+.compare-box {
+    @media only screen and (min-width: $tablet-breakpoint) {
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+        margin-bottom: 8px; 
+    }
+}

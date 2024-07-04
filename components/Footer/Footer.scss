@@ -1,0 +1,49 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.footer {
+    height: 50px;
+    background-color: $cobalt;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+
+    &__copyright {
+        @include body-mobile;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &--text {
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+    }
+
+    &__faq-button {
+        border: none;
+        text-decoration: underline;
+        @include body-mobile;
+        background-color: unset;
+        cursor: pointer;
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        height: 100px;
+        margin-top: 56px;
+    
+        &__copyright {
+            @include body-copy;
+        }
+
+        &__faq-button {
+            @include body-copy;
+    
+        }
+    }
+}

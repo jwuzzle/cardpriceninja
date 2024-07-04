@@ -1,0 +1,96 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+
+body {background-color: #F5F5F5; }
+
+
+
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+
+    &__heading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &--title {
+            margin-bottom: 36px;
+        }
+
+        &--description {
+            margin-bottom: 65px;
+
+        }
+    }
+
+    &__features {
+        display: flex;
+        justify-content: center;
+        width: 75%;
+
+    }
+
+    &__image {
+        width: 45%;
+
+        &--scale {
+            width: 70%;
+        }
+    }
+
+    &__feature-list {
+        width: 50%;
+        display: flex;
+    }
+}
+
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style: none;
+
+
+    &__main {
+        position: relative;
+        margin-bottom: 10px;
+        padding-left: 50px;
+        height: 20%;
+        width: 80%;
+    }
+
+    &__description {
+        display: block;
+        margin-top: 5px;
+        font-style: italic;
+    }
+}
+
+.home-divider {
+    border: 2px solid $black;
+    margin: 0 500px 0 500px;
+}
+
+
+
+
+
+.feature-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -15%;
+    width: 40px;
+    height: 40px;
+    background-image: url('../../src/assets/icons/home_bullet.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,128 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.confirm {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $black;
+    padding: 24px;
+    margin-top: 36px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #444, #000);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    align-items: center;
+    gap: 5%;
+    color: $white;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        @include subheader-mobile;
+        font-weight: 600;
+    }
+
+    &__description {
+        display: flex;
+        flex-direction: column;
+        @include body-mobile;
+        margin-top: 16px;
+    }
+
+    &__button-accept {
+        @include button-label-mobile;
+        padding: 12px 24px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin-top: 12px;
+        background-color: $cobalt;
+        color: $white;
+
+        &:hover {
+            background-color: #003080;
+        }
+    }
+
+    &__button-decline {
+        @include button-label-mobile;
+        padding: 12px 24px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin-top: 12px;
+        background-color: #d9534f;
+        color: $white;
+
+        &:hover {
+            background-color: #c9302c;
+        }
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        flex-direction: row;
+
+        &__header {
+            font-weight: unset;
+            @include subheader;
+        }
+
+        &__description {
+            @include body-copy;
+            margin-top: 24px;
+        }
+
+        &__button-accept {
+            @include button-label;
+        }
+
+        &__button-decline {
+            @include button-label;
+        }
+    }
+}
+
+.cta {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+.cta-group {
+    display: flex;
+    margin-top: 16px;
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        margin-top: 24px;
+    }
+}
+
+.confirm__button-accept:hover {
+    background-color: $cobalt;
+    color: $white;
+    font-weight: 600;
+    opacity: .6;
+}
+
+.confirm__button-decline:hover {
+    background-color: $red;
+    border: 1px solid $red;
+    color: $white;
+    font-weight: 600;
+    opacity: .6;
+}

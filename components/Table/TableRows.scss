@@ -1,0 +1,145 @@
+@use "../../styles/partials/global";
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+
+    .table-cell {
+        padding: 14px;
+        background-color: $white;
+        color: $cobalt;
+        border-bottom: 1px solid #ddd;
+        vertical-align: middle;
+        @include body-mobile;
+
+        &__button {
+            padding: 8px 12px;
+            background-color: $cobalt;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 8px;
+            @include button-label-mobile;
+
+            &:hover {
+                background-color: $white;
+                color: $cobalt;
+                border: 1px solid $cobalt;
+            }
+        }
+
+        .table-cell__content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            @include body-mobile;
+
+            img {
+                max-width: 100px;
+                margin-bottom: 5px;
+                border-radius: 4px;
+                min-height: 150px;
+            }
+        }
+    }
+
+    @media only screen and (min-width: $tablet-breakpoint) {
+        width: 100%;
+        border-collapse: collapse;
+
+        .table-cell {
+            padding: 14px;
+            color: $cobalt;
+            border-bottom: 1px solid #ddd;
+            vertical-align: middle;
+
+            &__button {
+                padding: 8px 12px;
+                background-color: $cobalt;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                margin-top: 8px;
+                @include button-label;
+
+                &:hover {
+                    background-color: $white;
+                    color: $cobalt;
+                    border: 1px solid $cobalt;
+                }
+            }
+
+            .table-cell__content {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                @include body-copy;
+
+                img {
+                    max-width: 100px;
+                    margin-bottom: 5px;
+                    border-radius: 4px;
+                    min-height: 150px;
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-width: $desktop-breakpoint) {
+        width: 100%;
+        border-collapse: collapse;
+
+        .table-cell {
+            padding: 14px;
+            color: $cobalt;
+            border-bottom: 1px solid #ddd;
+            vertical-align: middle;
+
+            &__button {
+                padding: 8px 12px;
+                background-color: $cobalt;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                margin-top: 8px;
+                @include button-label;
+
+                &:hover {
+                    background-color: $white;
+                    color: $cobalt;
+                    border: 1px solid $cobalt;
+                }
+            }
+
+            .table-cell__content {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                @include body-copy;
+
+                img {
+                    max-width: 200px;
+                    margin-bottom: 5px;
+                    border-radius: 4px;
+                    min-height: 150px;
+                }
+            }
+        }
+    }
+}
