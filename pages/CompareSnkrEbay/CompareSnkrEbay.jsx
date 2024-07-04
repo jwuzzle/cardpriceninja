@@ -383,7 +383,7 @@ const CompareSnkEbay = () => {
               Cancel
             </button>
            
-            <p className="compare__button--help">Select up to 5 listings below</p></div>
+            <p className="compare__button--help">Select up to 5 listings below. You must choose at least one listing from each marketplace.</p></div>
           ) : undefined}
       </div>
       <div className="compare__section">

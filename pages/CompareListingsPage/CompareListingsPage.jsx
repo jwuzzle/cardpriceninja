@@ -44,7 +44,7 @@ const CompareListingsPage = () => {
         <button className="back-button__text" onClick={handleBackClick}>Go Back to Listings</button>
       </div>
       <div>
-        <h1 className="compare-listing-page__header">Compare selected items</h1>
+        <h1 className="compare-listing-page__header">Compare Selected Items</h1>
       </div>
       <Table
         tableHeaders={tableHeaders}
