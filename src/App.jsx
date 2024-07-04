@@ -11,6 +11,7 @@ import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import CompareListingsPage from "../pages/CompareListingsPage/CompareListingsPage";
 import PageNotFound from "../components/PageNotFound/PageNotFound";
 import ResultErrorBoundary from "../components/ErrorBoundary/ResultErrorBoundary";
+import FAQPage from "../pages/FAQPage/FAQPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/compare" element={<CompareSnkEbay />} />
             <Route path="/compare-listings" element={<CompareListingsPage />} />
             <Route path="/loader" element={<NinjaLoader />} />
+            <Route path="/faq" element={<FAQPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </ResultErrorBoundary>

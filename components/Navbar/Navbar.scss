@@ -7,7 +7,6 @@
 
 .header {
     width: 100%;
-    overflow-x: hidden;
     box-sizing: border-box;
     position: sticky;
     top: 0;
@@ -79,8 +78,8 @@
         &__logo-text {
             padding-left: 0;
             width: 200px;
-            height: 400px;
-            overflow: hidden;
+            height: auto;
+            overflow-y: hidden;
         }
 
         &__menu {

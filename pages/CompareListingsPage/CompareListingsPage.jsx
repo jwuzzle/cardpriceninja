@@ -37,6 +37,8 @@ const CompareListingsPage = () => {
     navigate(-1)
   }
 
+  console.log(handleBackClick)
+
   return (
     <div className="compare-listing-page">
       <div className="back-button">
