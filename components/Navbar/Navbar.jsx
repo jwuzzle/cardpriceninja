@@ -3,8 +3,10 @@ import "./Navbar.scss";
 import logo from "../../src/assets/logo/CardPriceNinjaLogo.svg";
 import logotext from "../../src/assets/logo/CardPriceNinjaLogoText.svg";
 import search from "../../src/assets/icons/magnifying-glass-solid.svg";
+import faq from "../../src/assets/icons/circle-question-regular.svg";
 import { useState } from "react";
 import Searchbar from "../Searchbar/Searchbar";
+import { useNavigate } from "react-router-dom";
 
 /* const navIcons = [
     {src: "../../src/assets/icons/magnifying-glass-solid.svg", alt: "search"},
@@ -19,6 +21,11 @@ const Navbar = () => {
     setOpenSearchBar(!openSearchBar);
   };
 
+  const navigate = useNavigate();
+  const openFaqs = () => {
+    navigate('/faq');
+  };
+
   return (
     <header className="header">
       <nav className="nav" id="navbar">
@@ -31,6 +38,7 @@ const Navbar = () => {
             <Searchbar helper="off" openSearchBar={() => openSearch()} />
           ) : null}
           <img onClick={openSearch} className="nav__menu-object" src={search} />
+          <img onClick={openFaqs} className="nav__menu-object" src={faq} />
           {/* {navIcons.map((icon, index) => (
         <img className="nav__menu-object" key={index} src={icon.src} alt={icon.alt}/>
     ))} */}
