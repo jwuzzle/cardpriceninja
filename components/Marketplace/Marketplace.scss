@@ -92,19 +92,27 @@
 } */
 
 .carousel {
+
+    @media only screen and (min-width: $tablet-breakpoint) {
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
     box-sizing: border-box;
+    }
 }
 
 .carousel-container {
+
+    @media only screen and (min-width: $tablet-breakpoint) {
     display: inline-block;
     animation: scroll 20s linear infinite;
+    }
 }
 
 .carousel-group {
+    @media only screen and (min-width: $tablet-breakpoint) {
     display: flex;
+    }
 }
 
 

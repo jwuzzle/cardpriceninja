@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
-import logo from "../../src/assets/logo/CardPriceNinjaLogo.svg";
-import logotext from "../../src/assets/logo/CardPriceNinjaLogoText.svg";
+import logo from "../../src/assets/logo/CardPriceNinjaLogo.png";
+import logotext from "../../src/assets/logo/CardPriceNinjaLogoText.png";
 import search from "../../src/assets/icons/magnifying-glass-solid.svg";
 import faq from "../../src/assets/icons/circle-question-regular.svg";
 import { useState } from "react";

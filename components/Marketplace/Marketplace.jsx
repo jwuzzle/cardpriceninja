@@ -1,6 +1,6 @@
 import "./Marketplace.scss";
-import ebaylogo from "../../src/assets/logo/ebaylogo.svg";
-import snkrlogo from "../../src/assets/logo/snkrdunklogo.svg";
+import ebaylogo from "../../src/assets/logo/ebaylogo.png";
+import snkrlogo from "../../src/assets/logo/snkrdunklogo.png";
 
 const Marketplace = () => {
   return (
