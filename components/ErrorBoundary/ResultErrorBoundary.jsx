@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ninjaerror from "../../src/assets/images/NinjaError.svg";
 import "./ErrorBoundary.scss";
 
-const ErrorBoundary = ({ children }) => {
+const ResultErrorBoundary = ({ children }) => {
     const [hasError, setHasError] = useState(false);
   
     useEffect(() => {
@@ -41,4 +41,4 @@ const ErrorBoundary = ({ children }) => {
   return children;
 }
 
-export default ErrorBoundary;
+export default ResultErrorBoundary;
