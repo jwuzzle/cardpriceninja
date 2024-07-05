@@ -74,7 +74,7 @@
 
 .logo {
 
-    max-width: 100px;
+    max-width: 75px;
     margin: 0 10px;
     cursor: pointer;
 
@@ -107,11 +107,6 @@
     display: flex;
 }
 
-.carousel-item {
-    width: 150px; /* Adjust to your logo size */
-    display: inline-block;
-    margin: 0 10px; /* Space between logos */
-}
 
 @keyframes scroll {
     from {
