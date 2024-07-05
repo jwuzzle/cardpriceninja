@@ -4,10 +4,16 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
 
-.search {
+.navsearch {
     display: flex;
     gap: 1rem;
     margin-top: 16px;
+    position: absolute;
+    top: 60%;
+    left: 30%;
+    background-color: $cobalt;
+    padding: 36px 16px;
+    border-radius: 10px;
 
     &__top {
         width: 100%;
@@ -22,6 +28,10 @@
         flex-direction: column;
         width: 100%;
         margin: unset;
+        position: unset;
+        top: unset;
+        left: unset;
+        padding: 10px 25px;
 
         &__top {
             width: 100%;
@@ -31,7 +41,7 @@
     }
 }
 
-.search-bar {
+.navsearch-bar {
 
     flex: 1;
     min-width: 70%;
@@ -44,14 +54,13 @@
 
     &__button {
         background-color: $cobalt;
-        opacity: 0.5;
-        border: 1px solid $lightgray;
+        border: 1px solid $white;
         border-radius: 0.5rem;
         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
         padding: 8px 16px;
         color: $white;
         @include button-label-mobile;
-        width: 25%;
+        width: fit-content;
         margin-left: 8px;
         height: 40px;
 
@@ -79,6 +88,8 @@
             margin-left: 16px;
             height: 100%;
             padding: .9rem;
+            border: 1px solid $lightgray;
+            opacity: 0.5;
 
         }
 
@@ -86,7 +97,7 @@
 
 }
 
-.search-bar-container {
+.navsearch-bar-container {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -94,25 +105,7 @@
     @media only screen and (min-width: $tablet-breakpoint) {}
 }
 
-.search-bar__button:hover {
+.navsearch-bar__button:hover {
     background-color: $cobalt;
     opacity: 0.9;
-}
-
-
-.helper-off {
-    display: none;
-}
-
-.mobile-search {
- position: absolute;
-    top: 120%;
-    left: 40%;
-
-    @media only screen and (min-width: $tablet-breakpoint) {
-        position: unset;
-        top: unset;
-        left: unset;
-
-    }
 }

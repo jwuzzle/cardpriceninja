@@ -5,7 +5,7 @@ import logotext from "../../src/assets/logo/CardPriceNinjaLogoText.png";
 import search from "../../src/assets/icons/magnifying-glass-solid.svg";
 import faq from "../../src/assets/icons/circle-question-regular.svg";
 import { useState } from "react";
-import Searchbar from "../Searchbar/Searchbar";
+import NavSearchbar from "../Searchbar/NavSearchbar";
 import { useNavigate } from "react-router-dom";
 
 /* const navIcons = [
@@ -35,7 +35,7 @@ const Navbar = () => {
         </Link>
         <div className="nav__menu">
           {openSearchBar === true ? (
-            <Searchbar helper="off" openSearchBar={() => openSearch()} />
+            <NavSearchbar openSearchBar={() => openSearch()} />
           ) : null}
           <img onClick={openSearch} className="nav__menu-object" src={search} />
           <img onClick={openFaqs} className="nav__menu-object" src={faq} />
