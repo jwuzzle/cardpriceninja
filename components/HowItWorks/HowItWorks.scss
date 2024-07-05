@@ -13,11 +13,8 @@
     align-items: center;
     margin: 24px 16px;
     background-color: $white;
-    /* Or $white if using SCSS */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
-        /* Light shadow */
         0 6px 20px rgba(0, 0, 0, 0.1);
-    /* Deeper shadow for depth */
     background-color: $white;
     height: auto;
     padding: 16px;
@@ -125,7 +122,6 @@
         position: relative;
         margin-bottom: 10px;
         padding: 16px 16px 16px 50px;
-        height: 80px;
         width: 80%;
         @include subheader-mobile;
         font-weight: 600;
@@ -134,6 +130,9 @@
             0 6px 20px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         color: $cobalt;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     &__description {
@@ -181,8 +180,8 @@
 .feature-list li::before {
     content: "";
     position: absolute;
-    left: 5%;
-    top: 4%;
+    left: 2%;
+    top: 5%;
     width: 40px;
     height: 40px;
     background-image: url('../../src/assets/icons/home_bullet.svg');

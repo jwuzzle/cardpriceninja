@@ -34,6 +34,8 @@
 .tooltip-trigger {
 position: relative;
 display: inline;
+height: auto;
+/* pointer-events: none;  */
 }
 
 .tooltip-trigger img {
@@ -81,6 +83,7 @@ display: inline;
     border-width: 5px;
     border-style: solid;
     border-color: transparent transparent $cobalt transparent;
+    pointer-events: none; 
 }
 
 
