@@ -6,8 +6,10 @@ const ResultErrorBoundary = ({ children }) => {
     const [hasError, setHasError] = useState(false);
   
     useEffect(() => {
-      const handleError = (error, errorInfo) => {
-        console.error("ErrorBoundary caught an error", error, errorInfo);
+      const handleError = (event) => {
+        if (event.error instanceof TypeError) {
+        console.error("ErrorBoundary caught an typeerror", error.event);
+      }
         setHasError(true);
       };
   
