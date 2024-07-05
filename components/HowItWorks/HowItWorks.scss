@@ -17,7 +17,7 @@
         0 6px 20px rgba(0, 0, 0, 0.1);
     background-color: $white;
     height: auto;
-    padding: 16px;
+    padding: 0 16px 36px 16px;
     border-radius: 10px;
 
     &__top {
@@ -41,6 +41,7 @@
         display: flex;
         justify-content: center;
         padding: 16px 0;
+        margin-top: 16px;
     }
 
     &__feature-list {
@@ -90,6 +91,7 @@
             align-items: center;
             width: 75%;
             transform: translate(0, -60px);
+            margin-top: unset;
         }
 
         &__image {

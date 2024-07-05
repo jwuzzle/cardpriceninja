@@ -10,7 +10,6 @@
     flex-direction: column;
     margin: 24px 16px;
     overflow: hidden;
-    height: 20vh;
     min-height: 400px;
     padding: 16px;
     border-radius: 10px;
@@ -23,7 +22,7 @@
             width: 40%;
 
             &--header {
-                @include page-header-mobile;
+                @include home-header-mobile;
             }
         }
 
